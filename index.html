@@ -1,26 +1,576 @@
-<!doctype html><html lang='it'><head><meta charset='utf-8'><title>Gantt SPQM-1</title>
+<!doctype html>
+<html lang='it'>
+<head>
+<meta charset='utf-8'>
+<title>Gantt SPQM-1 ? Query Manager</title>
 <style>
-body{font-family:Segoe UI,Arial,sans-serif;background:#0d1117;color:#e6edf3;margin:0}
-.head{padding:14px 20px;background:#161b22;border-bottom:1px solid #30363d}
-.h1{font-size:20px;font-weight:600}.sub{font-size:12px;color:#8b949e;margin-top:4px}
-.kpi{display:flex;gap:12px;padding:12px 20px;background:#161b22;border-bottom:1px solid #30363d;align-items:center}
-.card{background:#21262d;padding:10px 14px;border-radius:8px;min-width:110px} .card b{font-size:20px}
-.ok{color:#3fb950} .pr{color:#388bfd} .td{color:#8b949e}
-.main{padding:18px 20px} .sec{margin-bottom:18px} .sct{font-size:13px;color:#8b949e;margin:6px 0}
-table{width:100%;border-collapse:collapse;font-size:12px} th,td{border-bottom:1px solid #21262d;padding:7px 8px;text-align:left} th{color:#8b949e;background:#161b22}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Segoe UI,Arial,sans-serif;background:#0d1117;color:#e6edf3;font-size:13px}
 a{color:#58a6ff;text-decoration:none}
-.badge{padding:2px 8px;border-radius:10px;font-size:10px} .badge.done{background:#163621;color:#3fb950} .badge.prog{background:#122f53;color:#58a6ff} .badge.todo{background:#2f343d;color:#8b949e}
-.barwrap{position:relative} .barcell{position:relative;min-width:430px;height:28px} .track{position:absolute;left:0;right:0;top:11px;height:6px;background:#21262d;border-radius:4px} .bar{position:absolute;top:9px;height:10px;border-radius:6px;z-index:3}
-.vivvac{position:absolute;top:0;bottom:0;background:rgba(248,81,73,.18);z-index:1} .caivac{position:absolute;top:0;bottom:0;background:rgba(187,128,9,.18);z-index:1} .caisick{position:absolute;top:0;bottom:0;background:rgba(121,192,255,.16);z-index:1}
-.today{position:absolute;top:0;bottom:0;width:2px;background:#f85149;z-index:4}
-.legend{font-size:11px;color:#8b949e;margin:8px 0 14px} .note{margin-top:12px;padding:10px 12px;background:#161b22;border:1px solid #30363d;border-radius:8px;font-size:12px}
-</style></head><body>
-<div class='head'><div class='h1'>SPQM-1 ? Gantt aggiornato con ferie + malattia</div>
-<div class='sub'>Vincoli: Vivarelli ferie 10-21/08 e 07-11/09 + venerd? mezza giornata; Caiella ferie 21/08-04/09 + malattia 20-22/07</div></div>
-<div class='kpi'><div class='card'><div class='ok'><b>6</b></div><div>Fatto</div></div><div class='card'><div class='pr'><b>11</b></div><div>In corso</div></div><div class='card'><div class='td'><b>33</b></div><div>Da completare</div></div>
-<div style='margin-left:auto'><div style='font-size:12px;color:#8b949e'>Fine prevista progetto (ricalcolata)</div><div style='font-size:22px;font-weight:700;color:#f0883e'>15/10/2026</div><div style='font-size:11px;color:#8b949e'>BE: 15/10/2026 ? FE: 06/10/2026</div></div></div>
-<div class='main'><div class='legend'>Rosso=ferie Vivarelli ? Ambra=ferie Caiella ? Azzurro=malattia Caiella ? Linea rossa=oggi (30/07/2026)</div>
-<div class='sec'><div class='sct'>Backend (D. Vivarelli)</div><div class='barwrap'><div class='vivvac' style='left:26.21%;width:11.48%'></div><div class='vivvac' style='left:53.40%;width:4.68%'></div><div class='today' style='left:15.53%'></div><table><thead><tr><th>Ticket</th><th>Task</th><th>Owner</th><th>Stato</th><th>h log</th><th>Periodo</th><th>Timeline</th></tr></thead><tbody><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-2' target='_blank'>SPQM-2</a></td><td>BE-01 - Impostazione progetto backend</td><td>D. Vivarelli</td><td><span class='badge done'>Fatto</span></td><td>8</td><td>14/07 - 14/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:0.00%;width:0.80%;background:#3fb950'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-4' target='_blank'>SPQM-4</a></td><td>BE-03 - Sicurezza applicativa e JWT</td><td>D. Vivarelli</td><td><span class='badge done'>Fatto</span></td><td>16</td><td>15/07 - 16/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:0.97%;width:1.77%;background:#3fb950'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-5' target='_blank'>SPQM-5</a></td><td>BE-04 - Configurazione registry database</td><td>D. Vivarelli</td><td><span class='badge done'>Fatto</span></td><td>8</td><td>17/07 - 27/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:2.91%;width:10.51%;background:#3fb950'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-6' target='_blank'>SPQM-6</a></td><td>BE-05 - Modellazione persistenza MongoDB</td><td>D. Vivarelli</td><td><span class='badge prog'>In corso</span></td><td>12</td><td>22/07 - 30/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:7.77%;width:8.57%;background:#388bfd'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-7' target='_blank'>SPQM-7</a></td><td>BE-06 - Gestione anagrafica template DBA</td><td>D. Vivarelli</td><td><span class='badge done'>Fatto</span></td><td>12</td><td>24/07 - 27/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:9.71%;width:3.71%;background:#3fb950'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-8' target='_blank'>SPQM-8</a></td><td>BE-07 - Soft delete template</td><td>D. Vivarelli</td><td><span class='badge done'>Fatto</span></td><td>8</td><td>27/07 - 27/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:12.62%;width:0.80%;background:#3fb950'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-9' target='_blank'>SPQM-9</a></td><td>BE-08 - Parsing SQL e validazione strutturale</td><td>D. Vivarelli</td><td><span class='badge prog'>In corso</span></td><td>28</td><td>28/07 - 30/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:13.59%;width:2.74%;background:#388bfd'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-10' target='_blank'>SPQM-10</a></td><td>BE-09 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>03/08 - 04/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:19.42%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-11' target='_blank'>SPQM-11</a></td><td>BE-10 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>05/08 - 06/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:21.36%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-12' target='_blank'>SPQM-12</a></td><td>BE-11 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>07/08 - 25/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:23.30%;width:18.28%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-13' target='_blank'>SPQM-13</a></td><td>BE-12 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>26/08 - 27/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:41.75%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-14' target='_blank'>SPQM-14</a></td><td>BE-13 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>28/08 - 01/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:43.69%;width:4.68%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-15' target='_blank'>SPQM-15</a></td><td>BE-14 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>02/09 - 03/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:48.54%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-16' target='_blank'>SPQM-16</a></td><td>BE-15 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>04/09 - 15/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:50.49%;width:11.48%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-17' target='_blank'>SPQM-17</a></td><td>BE-16 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>16/09 - 17/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:62.14%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-18' target='_blank'>SPQM-18</a></td><td>BE-17 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>18/09 - 22/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:64.08%;width:4.68%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-19' target='_blank'>SPQM-19</a></td><td>BE-18 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>23/09 - 24/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:68.93%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-20' target='_blank'>SPQM-20</a></td><td>BE-19 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>25/09 - 29/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:70.87%;width:4.68%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-21' target='_blank'>SPQM-21</a></td><td>BE-20 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>30/09 - 01/10</td><td class='barcell'><div class='track'></div><div class='bar' style='left:75.73%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-22' target='_blank'>SPQM-22</a></td><td>BE-21 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>02/10 - 06/10</td><td class='barcell'><div class='track'></div><div class='bar' style='left:77.67%;width:4.68%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-23' target='_blank'>SPQM-23</a></td><td>BE-22 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>07/10 - 08/10</td><td class='barcell'><div class='track'></div><div class='bar' style='left:82.52%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-24' target='_blank'>SPQM-24</a></td><td>BE-23 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>09/10 - 13/10</td><td class='barcell'><div class='track'></div><div class='bar' style='left:84.47%;width:4.68%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-25' target='_blank'>SPQM-25</a></td><td>BE-24 - Backlog</td><td>D. Vivarelli</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>14/10 - 15/10</td><td class='barcell'><div class='track'></div><div class='bar' style='left:89.32%;width:1.77%;background:#6e7681'></div></td></tr></tbody></table></div></div>
-<div class='sec'><div class='sct'>Frontend + governance (M. Caiella)</div><div class='barwrap'><div class='caivac' style='left:36.89%;width:14.39%'></div><div class='caisick' style='left:5.83%;width:2.74%'></div><div class='today' style='left:15.53%'></div><table><thead><tr><th>Ticket</th><th>Task</th><th>Owner</th><th>Stato</th><th>h log</th><th>Periodo</th><th>Timeline</th></tr></thead><tbody><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-27' target='_blank'>SPQM-27</a></td><td>FE-01 - Bootstrap progetto frontend Angular</td><td>M. Caiella</td><td><span class='badge prog'>In corso</span></td><td>8</td><td>14/07 - 30/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:0.00%;width:16.33%;background:#388bfd'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-28' target='_blank'>SPQM-28</a></td><td>FE-02 - Integrazione OpenAPI client generator</td><td>M. Caiella</td><td><span class='badge done'>Fatto</span></td><td>8</td><td>15/07 - 27/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:0.97%;width:12.45%;background:#3fb950'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-31' target='_blank'>SPQM-31</a></td><td>FE-05 - Routing e guards per ruolo</td><td>M. Caiella</td><td><span class='badge prog'>In corso</span></td><td>4</td><td>16/07 - 30/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:1.94%;width:14.39%;background:#388bfd'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-32' target='_blank'>SPQM-32</a></td><td>FE-06 - Shell applicativa e componenti shared</td><td>M. Caiella</td><td><span class='badge prog'>In corso</span></td><td>3</td><td>16/07 - 30/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:1.94%;width:14.39%;background:#388bfd'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-33' target='_blank'>SPQM-33</a></td><td>FE-07 - Dashboard SD</td><td>M. Caiella</td><td><span class='badge prog'>In corso</span></td><td>6</td><td>15/07 - 30/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:0.97%;width:15.36%;background:#388bfd'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-34' target='_blank'>SPQM-34</a></td><td>FE-08 - Form dinamico</td><td>M. Caiella</td><td><span class='badge prog'>In corso</span></td><td>6</td><td>23/07 - 30/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:8.74%;width:7.60%;background:#388bfd'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-38' target='_blank'>SPQM-38</a></td><td>FE-12 - Layout area Admin</td><td>M. Caiella</td><td><span class='badge prog'>In corso</span></td><td>4</td><td>27/07 - 30/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:12.62%;width:3.71%;background:#388bfd'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-42' target='_blank'>SPQM-42</a></td><td>FE-16 - Dashboard DBA</td><td>M. Caiella</td><td><span class='badge prog'>In corso</span></td><td>4</td><td>24/07 - 30/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:9.71%;width:6.63%;background:#388bfd'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-43' target='_blank'>SPQM-43</a></td><td>FE-17 - Editor SQL DBA</td><td>M. Caiella</td><td><span class='badge prog'>In corso</span></td><td>3</td><td>24/07 - 30/07</td><td class='barcell'><div class='track'></div><div class='bar' style='left:9.71%;width:6.63%;background:#388bfd'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-29' target='_blank'>SPQM-29</a></td><td>FE-03 - Gestione bootstrap autenticazione</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>03/08 - 04/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:19.42%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-30' target='_blank'>SPQM-30</a></td><td>FE-04 - Interceptor e sicurezza FE</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>05/08 - 06/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:21.36%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-35' target='_blank'>SPQM-35</a></td><td>FE-09 - Modale SD esecuzione template</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>07/08 - 10/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:23.30%;width:3.71%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-36' target='_blank'>SPQM-36</a></td><td>FE-10 - Flusso UI preview/confirm</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>11/08 - 12/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:27.18%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-37' target='_blank'>SPQM-37</a></td><td>FE-11 - Stato frontend esecuzioni</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>13/08 - 14/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:29.13%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-39' target='_blank'>SPQM-39</a></td><td>FE-13 - Area Admin esecuzione template</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>17/08 - 18/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:33.01%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-40' target='_blank'>SPQM-40</a></td><td>FE-14 - Area Admin gestione permessi</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>19/08 - 20/08</td><td class='barcell'><div class='track'></div><div class='bar' style='left:34.95%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-41' target='_blank'>SPQM-41</a></td><td>FE-15 - Toggle grant/revoke</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>07/09 - 08/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:53.40%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-44' target='_blank'>SPQM-44</a></td><td>FE-18 - Pannello risultati analisi</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>09/09 - 10/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:55.34%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-45' target='_blank'>SPQM-45</a></td><td>FE-19 - Form metadati template</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>11/09 - 14/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:57.28%;width:3.71%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-46' target='_blank'>SPQM-46</a></td><td>FE-20 - State machine salvataggio</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>15/09 - 16/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:61.17%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-47' target='_blank'>SPQM-47</a></td><td>FE-21 - Delete template DBA</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>17/09 - 18/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:63.11%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-48' target='_blank'>SPQM-48</a></td><td>FE-22 - Gestione errori e feedback</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>21/09 - 22/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:66.99%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-49' target='_blank'>SPQM-49</a></td><td>FE-24 - Packaging readiness</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>23/09 - 24/09</td><td class='barcell'><div class='track'></div><div class='bar' style='left:68.93%;width:1.77%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-50' target='_blank'>SPQM-50</a></td><td>Gestione progetto</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>25/09 - 01/10</td><td class='barcell'><div class='track'></div><div class='bar' style='left:70.87%;width:6.63%;background:#6e7681'></div></td></tr><tr><td><a href='https://jira.gigroup.com/jira/browse/SPQM-51' target='_blank'>SPQM-51</a></td><td>Codereview</td><td>M. Caiella</td><td><span class='badge todo'>Da completare</span></td><td>-</td><td>02/10 - 06/10</td><td class='barcell'><div class='track'></div><div class='bar' style='left:77.67%;width:4.68%;background:#6e7681'></div></td></tr></tbody></table></div></div>
-<div class='note'>Con questo aggiornamento la fine FE slitta, ma il percorso critico resta BE. Fine progetto prevista: <b>15/10/2026</b>.</div>
-</div></body></html>
+.head{padding:14px 20px;background:#161b22;border-bottom:1px solid #30363d}
+.h1{font-size:18px;font-weight:700}
+.sub{font-size:11px;color:#8b949e;margin-top:3px}
+.kpi{display:flex;gap:10px;padding:10px 20px;background:#161b22;border-bottom:1px solid #30363d;align-items:center;flex-wrap:wrap}
+.card{background:#21262d;padding:8px 14px;border-radius:8px;min-width:100px;text-align:center}
+.card b{font-size:20px;display:block}
+.ok{color:#3fb950} .pr{color:#388bfd} .td{color:#8b949e}
+.main{padding:14px 20px}
+.sec{margin-bottom:22px}
+.sct{font-size:12px;font-weight:600;color:#8b949e;margin:8px 0 4px;text-transform:uppercase;letter-spacing:.5px}
+.legend{font-size:10px;color:#8b949e;margin-bottom:8px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.ldot{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin-right:3px}
+table{width:100%;border-collapse:collapse}
+th,td{border-bottom:1px solid #21262d;padding:5px 7px;text-align:left;white-space:nowrap}
+th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
+.tname{max-width:210px;overflow:hidden;text-overflow:ellipsis}
+.town{max-width:90px;overflow:hidden;text-overflow:ellipsis}
+.tdate{font-size:10px;color:#8b949e}
+.badge{padding:2px 7px;border-radius:10px;font-size:10px;white-space:nowrap}
+.badge.done{background:#163621;color:#3fb950}
+.badge.prog{background:#122f53;color:#58a6ff}
+.badge.todo{background:#2f343d;color:#8b949e}
+/* Bar cell ? fixed min-width for the timeline area */
+.barcell{min-width:400px;padding:0 4px}
+.track{position:relative;height:24px;background:#161b22;border-radius:3px;overflow:visible}
+.bar{position:absolute;top:7px;height:10px;border-radius:5px;z-index:3}
+.abs{position:absolute;top:0;bottom:0;z-index:1;border-radius:2px}
+/* TODAY LINE ? inside .track, same % space as bars */
+.today-inner{position:absolute;top:-4px;bottom:-4px;width:2px;background:#f85149;z-index:5;border-radius:1px}
+/* Tick header */
+.tick-header{position:relative;height:16px;min-width:400px;margin:0 4px 2px}
+.tick-header span{position:absolute;font-size:9px;color:#484f58;transform:translateX(-50%);white-space:nowrap}
+</style>
+</head>
+<body>
+<div class='head'>
+  <div class='h1'>SPQM-1 ? Query Manager per Service Desk</div>
+  <div class='sub'>Fine prevista: <strong>15/10/2026</strong> &nbsp;|&nbsp; BE: 15/10/2026 &nbsp;|&nbsp; FE: 06/10/2026 &nbsp;|&nbsp; Oggi: 30/07/2026</div>
+</div>
+<div class='kpi'>
+  <div class='card'><b class='ok'>6</b>Fatto</div>
+  <div class='card'><b class='pr'>11</b>In corso</div>
+  <div class='card'><b class='td'>33</b>Da completare</div>
+  <div class='card'><b style='color:#f0883e'>50</b>Totale</div>
+</div>
+<div class='main'>
+  <div class='legend'>
+    <span><span class='ldot' style='background:#3fb950'></span>Fatto</span>
+    <span><span class='ldot' style='background:#388bfd'></span>In corso</span>
+    <span><span class='ldot' style='background:#6e7681'></span>Da completare</span>
+    <span><span class='ldot' style='background:#f85149;width:2px;border-radius:0'></span>Oggi</span>
+  </div>
+
+  <div class='sec'>
+    <div class='sct'>Backend ? D. Vivarelli</div>
+    <table>
+      <thead><tr>
+        <th style='width:75px'>Ticket</th>
+        <th style='width:210px'>Task</th>
+        <th style='width:90px'>Owner</th>
+        <th style='width:90px'>Stato</th>
+        <th style='width:45px'>h log</th>
+        <th style='width:80px'>Periodo</th>
+        <th><div class='tick-header'><span style='left:0.00%'>14/07</span><span style='left:6.80%'>21/07</span><span style='left:13.59%'>28/07</span><span style='left:20.39%'>04/08</span><span style='left:27.18%'>11/08</span><span style='left:33.98%'>18/08</span><span style='left:40.78%'>25/08</span><span style='left:47.57%'>01/09</span><span style='left:54.37%'>08/09</span><span style='left:61.17%'>15/09</span><span style='left:67.96%'>22/09</span><span style='left:74.76%'>29/09</span><span style='left:81.55%'>06/10</span><span style='left:88.35%'>13/10</span><span style='left:95.15%'>20/10</span></div></th>
+      </tr></thead>
+      <tbody><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-2' target='_blank'>SPQM-2</a></td>
+      <td class='tname'>BE-01 - Impostazione progetto backend</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge done'>Fatto</span></td>
+      <td>8</td>
+      <td class='tdate'>14/07-14/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:0.00%;width:0.50%;background:#3fb950'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-4' target='_blank'>SPQM-4</a></td>
+      <td class='tname'>BE-03 - Sicurezza applicativa e JWT</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge done'>Fatto</span></td>
+      <td>16</td>
+      <td class='tdate'>15/07-16/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:0.97%;width:1.47%;background:#3fb950'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-5' target='_blank'>SPQM-5</a></td>
+      <td class='tname'>BE-04 - Configurazione registry database</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge done'>Fatto</span></td>
+      <td>8</td>
+      <td class='tdate'>17/07-27/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:2.91%;width:10.21%;background:#3fb950'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-6' target='_blank'>SPQM-6</a></td>
+      <td class='tname'>BE-05 - Modellazione persistenza MongoDB</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge prog'>In corso</span></td>
+      <td>12</td>
+      <td class='tdate'>22/07-30/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:7.77%;width:8.27%;background:#388bfd'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-7' target='_blank'>SPQM-7</a></td>
+      <td class='tname'>BE-06 - Gestione anagrafica template DBA</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge done'>Fatto</span></td>
+      <td>12</td>
+      <td class='tdate'>24/07-27/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:9.71%;width:3.41%;background:#3fb950'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-8' target='_blank'>SPQM-8</a></td>
+      <td class='tname'>BE-07 - Soft delete template</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge done'>Fatto</span></td>
+      <td>8</td>
+      <td class='tdate'>27/07-27/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:12.62%;width:0.50%;background:#3fb950'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-9' target='_blank'>SPQM-9</a></td>
+      <td class='tname'>BE-08 - Parsing SQL e validazione strutturale</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge prog'>In corso</span></td>
+      <td>28</td>
+      <td class='tdate'>28/07-30/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:13.59%;width:2.44%;background:#388bfd'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-10' target='_blank'>SPQM-10</a></td>
+      <td class='tname'>BE-09 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>03/08-04/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:19.42%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-11' target='_blank'>SPQM-11</a></td>
+      <td class='tname'>BE-10 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>05/08-06/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:21.36%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-12' target='_blank'>SPQM-12</a></td>
+      <td class='tname'>BE-11 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>07/08-25/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:23.30%;width:17.98%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-13' target='_blank'>SPQM-13</a></td>
+      <td class='tname'>BE-12 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>26/08-27/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:41.75%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-14' target='_blank'>SPQM-14</a></td>
+      <td class='tname'>BE-13 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>28/08-01/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:43.69%;width:4.38%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-15' target='_blank'>SPQM-15</a></td>
+      <td class='tname'>BE-14 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>02/09-03/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:48.54%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-16' target='_blank'>SPQM-16</a></td>
+      <td class='tname'>BE-15 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>04/09-15/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:50.49%;width:11.18%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-17' target='_blank'>SPQM-17</a></td>
+      <td class='tname'>BE-16 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>16/09-17/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:62.14%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-18' target='_blank'>SPQM-18</a></td>
+      <td class='tname'>BE-17 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>18/09-22/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:64.08%;width:4.38%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-19' target='_blank'>SPQM-19</a></td>
+      <td class='tname'>BE-18 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>23/09-24/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:68.93%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-20' target='_blank'>SPQM-20</a></td>
+      <td class='tname'>BE-19 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>25/09-29/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:70.87%;width:4.38%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-21' target='_blank'>SPQM-21</a></td>
+      <td class='tname'>BE-20 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>30/09-01/10</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:75.73%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-22' target='_blank'>SPQM-22</a></td>
+      <td class='tname'>BE-21 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>02/10-06/10</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:77.67%;width:4.38%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-23' target='_blank'>SPQM-23</a></td>
+      <td class='tname'>BE-22 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>07/10-08/10</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:82.52%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-24' target='_blank'>SPQM-24</a></td>
+      <td class='tname'>BE-23 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>09/10-13/10</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:84.47%;width:4.38%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-25' target='_blank'>SPQM-25</a></td>
+      <td class='tname'>BE-24 - Backlog</td>
+      <td class='town'>D. Vivarelli</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>14/10-15/10</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:89.32%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr></tbody>
+    </table>
+  </div>
+
+  <div class='sec'>
+    <div class='sct'>Frontend + governance ? M. Caiella</div>
+    <table>
+      <thead><tr>
+        <th style='width:75px'>Ticket</th>
+        <th style='width:210px'>Task</th>
+        <th style='width:90px'>Owner</th>
+        <th style='width:90px'>Stato</th>
+        <th style='width:45px'>h log</th>
+        <th style='width:80px'>Periodo</th>
+        <th><div class='tick-header'><span style='left:0.00%'>14/07</span><span style='left:6.80%'>21/07</span><span style='left:13.59%'>28/07</span><span style='left:20.39%'>04/08</span><span style='left:27.18%'>11/08</span><span style='left:33.98%'>18/08</span><span style='left:40.78%'>25/08</span><span style='left:47.57%'>01/09</span><span style='left:54.37%'>08/09</span><span style='left:61.17%'>15/09</span><span style='left:67.96%'>22/09</span><span style='left:74.76%'>29/09</span><span style='left:81.55%'>06/10</span><span style='left:88.35%'>13/10</span><span style='left:95.15%'>20/10</span></div></th>
+      </tr></thead>
+      <tbody><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-27' target='_blank'>SPQM-27</a></td>
+      <td class='tname'>FE-01 - Bootstrap progetto frontend Angular</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge prog'>In corso</span></td>
+      <td>8</td>
+      <td class='tdate'>14/07-30/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:0.00%;width:16.03%;background:#388bfd'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-28' target='_blank'>SPQM-28</a></td>
+      <td class='tname'>FE-02 - Integrazione OpenAPI client generator</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge done'>Fatto</span></td>
+      <td>8</td>
+      <td class='tdate'>15/07-27/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:0.97%;width:12.15%;background:#3fb950'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-31' target='_blank'>SPQM-31</a></td>
+      <td class='tname'>FE-05 - Routing e guards per ruolo</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge prog'>In corso</span></td>
+      <td>4</td>
+      <td class='tdate'>16/07-30/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:1.94%;width:14.09%;background:#388bfd'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-32' target='_blank'>SPQM-32</a></td>
+      <td class='tname'>FE-06 - Shell applicativa e componenti shared</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge prog'>In corso</span></td>
+      <td>3</td>
+      <td class='tdate'>16/07-30/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:1.94%;width:14.09%;background:#388bfd'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-33' target='_blank'>SPQM-33</a></td>
+      <td class='tname'>FE-07 - Dashboard SD</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge prog'>In corso</span></td>
+      <td>6</td>
+      <td class='tdate'>15/07-30/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:0.97%;width:15.06%;background:#388bfd'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-34' target='_blank'>SPQM-34</a></td>
+      <td class='tname'>FE-08 - Form dinamico</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge prog'>In corso</span></td>
+      <td>6</td>
+      <td class='tdate'>23/07-30/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:8.74%;width:7.30%;background:#388bfd'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-38' target='_blank'>SPQM-38</a></td>
+      <td class='tname'>FE-12 - Layout area Admin</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge prog'>In corso</span></td>
+      <td>4</td>
+      <td class='tdate'>27/07-30/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:12.62%;width:3.41%;background:#388bfd'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-42' target='_blank'>SPQM-42</a></td>
+      <td class='tname'>FE-16 - Dashboard DBA</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge prog'>In corso</span></td>
+      <td>4</td>
+      <td class='tdate'>24/07-30/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:9.71%;width:6.33%;background:#388bfd'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-43' target='_blank'>SPQM-43</a></td>
+      <td class='tname'>FE-17 - Editor SQL DBA</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge prog'>In corso</span></td>
+      <td>3</td>
+      <td class='tdate'>24/07-30/07</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:9.71%;width:6.33%;background:#388bfd'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-29' target='_blank'>SPQM-29</a></td>
+      <td class='tname'>FE-03 - Gestione bootstrap autenticazione</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>03/08-04/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:19.42%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-30' target='_blank'>SPQM-30</a></td>
+      <td class='tname'>FE-04 - Interceptor e sicurezza FE</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>05/08-06/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:21.36%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-35' target='_blank'>SPQM-35</a></td>
+      <td class='tname'>FE-09 - Modale SD esecuzione template</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>07/08-10/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:23.30%;width:3.41%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-36' target='_blank'>SPQM-36</a></td>
+      <td class='tname'>FE-10 - Flusso UI preview/confirm</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>11/08-12/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:27.18%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-37' target='_blank'>SPQM-37</a></td>
+      <td class='tname'>FE-11 - Stato frontend esecuzioni</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>13/08-14/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:29.13%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-39' target='_blank'>SPQM-39</a></td>
+      <td class='tname'>FE-13 - Area Admin esecuzione template</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>17/08-18/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:33.01%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-40' target='_blank'>SPQM-40</a></td>
+      <td class='tname'>FE-14 - Area Admin gestione permessi</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>19/08-20/08</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:34.95%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-41' target='_blank'>SPQM-41</a></td>
+      <td class='tname'>FE-15 - Toggle grant/revoke</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>07/09-08/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:53.40%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-44' target='_blank'>SPQM-44</a></td>
+      <td class='tname'>FE-18 - Pannello risultati analisi</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>09/09-10/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:55.34%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-45' target='_blank'>SPQM-45</a></td>
+      <td class='tname'>FE-19 - Form metadati template</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>11/09-14/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:57.28%;width:3.41%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-46' target='_blank'>SPQM-46</a></td>
+      <td class='tname'>FE-20 - State machine salvataggio</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>15/09-16/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:61.17%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-47' target='_blank'>SPQM-47</a></td>
+      <td class='tname'>FE-21 - Delete template DBA</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>17/09-18/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:63.11%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-48' target='_blank'>SPQM-48</a></td>
+      <td class='tname'>FE-22 - Gestione errori e feedback</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>21/09-22/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:66.99%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-49' target='_blank'>SPQM-49</a></td>
+      <td class='tname'>FE-24 - Packaging readiness</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>23/09-24/09</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:68.93%;width:1.47%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-50' target='_blank'>SPQM-50</a></td>
+      <td class='tname'>Gestione progetto</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>25/09-01/10</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:70.87%;width:6.33%;background:#6e7681'></div></div>
+      </td>
+    </tr><tr>
+      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-51' target='_blank'>SPQM-51</a></td>
+      <td class='tname'>Codereview</td>
+      <td class='town'>M. Caiella</td>
+      <td><span class='badge todo'>Da completare</span></td>
+      <td>-</td>
+      <td class='tdate'>02/10-06/10</td>
+      <td class='barcell'>
+        <div class='track'><div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div><div class='today-inner' style='left:15.53%'></div><div class='bar' style='left:77.67%;width:4.38%;background:#6e7681'></div></div>
+      </td>
+    </tr></tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
