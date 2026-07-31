@@ -1,965 +1,228 @@
-<!doctype html>
-<html lang='it'>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-<meta charset='utf-8'>
-<title>Gantt SPQM-1 ? Query Manager</title>
+<meta charset="UTF-8">
+<title>Gantt SPQM-1 - Query manager per service desk</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Segoe UI,Arial,sans-serif;background:#0d1117;color:#e6edf3;font-size:13px}
-a{color:#58a6ff;text-decoration:none}
-.head{padding:14px 20px;background:#161b22;border-bottom:1px solid #30363d}
-.h1{font-size:18px;font-weight:700}
-.sub{font-size:11px;color:#8b949e;margin-top:3px}
-.kpi{display:flex;gap:10px;padding:10px 20px;background:#161b22;border-bottom:1px solid #30363d;align-items:center;flex-wrap:wrap}
-.card{background:#21262d;padding:8px 14px;border-radius:8px;min-width:100px;text-align:center}
-.card b{font-size:20px;display:block}
-.ok{color:#3fb950} .pr{color:#388bfd} .td{color:#8b949e}
-.main{padding:14px 20px}
-.sec{margin-bottom:22px}
-.sct{font-size:12px;font-weight:600;color:#8b949e;margin:8px 0 4px;text-transform:uppercase;letter-spacing:.5px}
-.legend{font-size:10px;color:#8b949e;margin-bottom:8px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.ldot{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:middle;margin-right:3px}
-table{width:100%;border-collapse:collapse}
-th,td{border-bottom:1px solid #21262d;padding:5px 7px;text-align:left;white-space:nowrap;vertical-align:middle}
-th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
-.tname{max-width:200px;overflow:hidden;text-overflow:ellipsis}
-.town{max-width:90px}
-.tdate{font-size:10px;color:#8b949e}
-.badge{padding:2px 7px;border-radius:10px;font-size:10px}
-.badge.done{background:#163621;color:#3fb950}
-.badge.prog{background:#122f53;color:#58a6ff}
-.badge.todo{background:#2f343d;color:#8b949e}
-.barcell{min-width:380px;padding:0 4px}
-.track{position:relative;height:28px;background:#161b22;border-radius:3px}
-/* Barra pianificata (in alto) */
-.bar.planned{position:absolute;top:4px;height:8px;border-radius:4px;z-index:3;opacity:.85}
-/* Barra worklog reale (in basso, azzurra chiara) */
-.wl-bar{position:absolute;top:16px;height:6px;border-radius:3px;background:#79c0ff;opacity:.9;z-index:3}
-.abs{position:absolute;top:0;bottom:0;z-index:1;border-radius:2px}
-.today-inner{position:absolute;top:-3px;bottom:-3px;width:2px;background:#f85149;z-index:5;border-radius:1px}
-.tick-header{position:relative;height:16px;min-width:380px;margin:0 4px 2px}
-.tick-header span{position:absolute;font-size:9px;color:#484f58;transform:translateX(-50%);white-space:nowrap}
+  :root {
+    --be: #2563eb; --fe: #7c3aed; --pg: #059669;
+    --done: #16a34a; --progress: #f59e0b; --todo: #94a3b8;
+    --bg: #0f172a; --panel:#ffffff;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:#f1f5f9; color:#1e293b; }
+  header { background: linear-gradient(135deg,#0f172a,#1e3a8a); color:#fff; padding: 28px 32px; }
+  header h1 { margin:0 0 6px 0; font-size: 1.6rem; }
+  header .sub { opacity:.85; font-size: .95rem; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px 20px 60px; }
+  .cards { display:flex; gap:16px; flex-wrap:wrap; margin: 20px 0; }
+  .card { background:#fff; border-radius:10px; padding:16px 20px; box-shadow:0 1px 3px rgba(0,0,0,.08); flex:1; min-width:200px; }
+  .card h3 { margin:0 0 6px; font-size:.8rem; text-transform:uppercase; letter-spacing:.04em; color:#64748b; }
+  .card .val { font-size:1.4rem; font-weight:700; }
+  .be { color: var(--be);} .fe{color:var(--fe);} .pg{color:var(--pg);}
+  table.summary { width:100%; border-collapse: collapse; background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08); margin-bottom: 24px;}
+  table.summary th, table.summary td { padding: 10px 14px; text-align:left; border-bottom:1px solid #e2e8f0; font-size:.92rem; }
+  table.summary th { background:#f8fafc; color:#475569; text-transform:uppercase; font-size:.72rem; letter-spacing:.04em; }
+  .legend { display:flex; gap:18px; flex-wrap:wrap; margin: 10px 0 18px; font-size:.85rem; }
+  .legend span.dot { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px;}
+  .panel { background:#fff; border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,.08); padding:16px; overflow-x:auto; }
+  .group-title { font-weight:700; font-size:1rem; margin: 22px 0 8px; padding-left:4px; border-left:4px solid #cbd5e1; }
+  .group-title.BE { border-color: var(--be); color: var(--be); }
+  .group-title.FE { border-color: var(--fe); color: var(--fe); }
+  .group-title.Progetto { border-color: var(--pg); color: var(--pg); }
+  .rowlabel { font-size:.82rem; }
+  .rowlabel b { font-family: monospace; color:#334155; }
+  a.gh-link { display:inline-block; background:#facc15; color:#1e293b; font-weight:700; padding:10px 18px; border-radius:8px; text-decoration:none; margin-top:12px;}
+  a.gh-link:hover { background:#fde047; }
+  footer { text-align:center; color:#64748b; font-size:.8rem; padding: 20px; }
+  .barwrap { position:relative; height:22px; background:#eef2f7; border-radius:4px; }
+  .bar { position:absolute; top:2px; height:18px; border-radius:4px; }
+  .bar-fill { position:absolute; top:0; left:0; height:100%; border-radius:4px 0 0 4px; background:rgba(255,255,255,.55); }
+  .today-line { position:absolute; top:0; bottom:0; width:2px; background:#dc2626; z-index:5; }
+  .today-label { position:absolute; top:-2px; font-size:.68rem; color:#dc2626; font-weight:700; white-space:nowrap; z-index:5; }
+  .weekend { position:absolute; top:0; bottom:0; background:rgba(148,163,184,.18); }
+  .vac { position:absolute; top:0; bottom:0; background:repeating-linear-gradient(45deg, rgba(220,38,38,.10), rgba(220,38,38,.10) 4px, transparent 4px, transparent 8px); }
+  .month-line { position:absolute; top:0; bottom:0; width:1px; background:#e2e8f0; }
+  .month-label { position:absolute; top:0; font-size:.7rem; color:#94a3b8; }
+  .chartHeader { position:relative; height:20px; margin-bottom:4px; }
+  .chartRow { display:flex; align-items:center; gap:10px; padding:3px 0; }
+  .chartLabelCol { width:340px; flex:0 0 340px; }
+  .chartTrackCol { position:relative; flex:1; }
+  .critical-note { background:#fff7ed; border:1px solid #fdba74; color:#9a3412; padding:12px 16px; border-radius:8px; font-size:.9rem; margin: 14px 0 24px; }
 </style>
 </head>
 <body>
-<div class='head'>
-  <div class='h1'>SPQM-1 ? Query Manager per Service Desk</div>
-  <div class='sub'>Fine prevista: <strong>15/10/2026</strong> &nbsp;|&nbsp; BE: 15/10/2026 &nbsp;|&nbsp; FE: 06/10/2026 &nbsp;|&nbsp; Oggi: 30/07/2026</div>
-</div>
-<div class='kpi'>
-  <div class='card'><b class='ok'>6</b>Fatto</div>
-  <div class='card'><b class='pr'>11</b>In corso</div>
-  <div class='card'><b class='td'>33</b>Da completare</div>
-  <div class='card'><b style='color:#f0883e'>50</b>Totale</div>
-</div>
-<div class='main'>
-  <div class='legend'>
-    <span><span class='ldot' style='background:#3fb950'></span>Pianificato: Fatto</span>
-    <span><span class='ldot' style='background:#388bfd'></span>Pianificato: In corso</span>
-    <span><span class='ldot' style='background:#6e7681'></span>Pianificato: Da fare</span>
-    <span><span class='ldot' style='background:#79c0ff;height:6px'></span>Worklog reale</span>
-    <span><span class='ldot' style='background:#f85149;width:2px;border-radius:0'></span>Oggi</span>
-    <span style='margin-left:8px'>Stimato/Registrato: <span style='color:#3fb950'>verde</span>=in linea &nbsp; <span style='color:#f0883e'>arancione</span>=sforamento</span>
-    <span style='margin-left:8px'>Rimanente: <span style='color:#8b949e'>grigio</span>=da fare &nbsp; <span style='color:#3fb950'>verde</span>=completato</span>
+<header>
+  <h1>Gantt SPQM-1 &mdash; Query manager per service desk</h1>
+  <div class="sub">Aggiornamento automatico da Jira &middot; Ultimo aggiornamento: 2026-07-31</div>
+  <a class="gh-link" href="https://ccarroccio.github.io/gantt-spqm1/" target="_blank">🔗 Vai alla versione pubblicata su GitHub Pages</a>
+</header>
+<div class="container">
+
+  <div class="cards">
+    <div class="card"><h3>Fine prevista progetto</h3><div class="val">2026-10-08</div></div>
+    <div class="card"><h3 class="be">Fine prevista BE</h3><div class="val be">2026-10-01</div></div>
+    <div class="card"><h3 class="fe">Fine prevista FE</h3><div class="val fe">2026-09-18</div></div>
+    <div class="card"><h3 class="pg">Fine prevista Progetto/Bugfix</h3><div class="val pg">2026-10-08</div></div>
   </div>
 
-  <div class='sec'>
-    <div class='sct'>Backend ? D. Vivarelli</div>
-    <table>
-      <thead><tr>
-        <th style='width:75px'>Ticket</th>
-        <th style='width:200px'>Task</th>
-        <th style='width:85px'>Owner</th>
-        <th style='width:85px'>Stato</th>
-        <th style='width:150px'>Stimato vs Registrato</th>
-        <th style='width:90px'>Date piano / reale</th>
-        <th style='width:80px;text-align:center'>Rimanente</th>
-        <th><div class='tick-header'><span style='left:0.00%'>14/07</span><span style='left:6.80%'>21/07</span><span style='left:13.59%'>28/07</span><span style='left:20.39%'>04/08</span><span style='left:27.18%'>11/08</span><span style='left:33.98%'>18/08</span><span style='left:40.78%'>25/08</span><span style='left:47.57%'>01/09</span><span style='left:54.37%'>08/09</span><span style='left:61.17%'>15/09</span><span style='left:67.96%'>22/09</span><span style='left:74.76%'>29/09</span><span style='left:81.55%'>06/10</span><span style='left:88.35%'>13/10</span><span style='left:95.15%'>20/10</span></div></th>
-      </tr></thead>
-      <tbody><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-2' target='_blank'>SPQM-2</a></td>
-      <td class='tname' title='BE-01 - Impostazione progetto backend'>BE-01 - Impostazione progetto backend</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge done'>Fatto</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>14/07-14/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:0.00%;width:0.50%;background:#3fb950'></div>
-          <div class='wl-bar' style='left:0.00%;width:0.50%' title='Worklog: 14/07-14/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-4' target='_blank'>SPQM-4</a></td>
-      <td class='tname' title='BE-03 - Sicurezza applicativa e JWT'>BE-03 - Sicurezza applicativa e JWT</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge done'>Fatto</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>16h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>15/07-16/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:0.97%;width:1.47%;background:#3fb950'></div>
-          <div class='wl-bar' style='left:0.97%;width:1.47%' title='Worklog: 15/07-16/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-5' target='_blank'>SPQM-5</a></td>
-      <td class='tname' title='BE-04 - Configurazione registry database'>BE-04 - Configurazione registry database</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge done'>Fatto</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>17/07-27/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:2.91%;width:10.21%;background:#3fb950'></div>
-          <div class='wl-bar' style='left:2.91%;width:10.21%' title='Worklog: 17/07-27/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-6' target='_blank'>SPQM-6</a></td>
-      <td class='tname' title='BE-05 - Modellazione persistenza MongoDB'>BE-05 - Modellazione persistenza MongoDB</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge prog'>In corso</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>12h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>22/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 22/07-23/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:7.77%;width:8.27%;background:#388bfd'></div>
-          <div class='wl-bar' style='left:7.77%;width:1.47%' title='Worklog: 22/07-23/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-7' target='_blank'>SPQM-7</a></td>
-      <td class='tname' title='BE-06 - Gestione anagrafica template DBA'>BE-06 - Gestione anagrafica template DBA</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge done'>Fatto</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>12h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>24/07-27/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:9.71%;width:3.41%;background:#3fb950'></div>
-          <div class='wl-bar' style='left:9.71%;width:3.41%' title='Worklog: 24/07-27/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-8' target='_blank'>SPQM-8</a></td>
-      <td class='tname' title='BE-07 - Soft delete template'>BE-07 - Soft delete template</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge done'>Fatto</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>27/07-27/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:12.62%;width:0.50%;background:#3fb950'></div>
-          <div class='wl-bar' style='left:12.62%;width:0.50%' title='Worklog: 27/07-27/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-9' target='_blank'>SPQM-9</a></td>
-      <td class='tname' title='BE-08 - Parsing SQL e validazione strutturale'>BE-08 - Parsing SQL e validazione strutturale</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge prog'>In corso</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:88%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>28h / 32h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>28/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 28/07-31/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:13.59%;width:2.44%;background:#388bfd'></div>
-          <div class='wl-bar' style='left:13.59%;width:3.41%' title='Worklog: 28/07-31/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-10' target='_blank'>SPQM-10</a></td>
-      <td class='tname' title='BE-09 - Backlog'>BE-09 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>03/08-04/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:19.42%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-11' target='_blank'>SPQM-11</a></td>
-      <td class='tname' title='BE-10 - Backlog'>BE-10 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>05/08-06/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:21.36%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-12' target='_blank'>SPQM-12</a></td>
-      <td class='tname' title='BE-11 - Backlog'>BE-11 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>07/08-25/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:23.30%;width:17.98%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-13' target='_blank'>SPQM-13</a></td>
-      <td class='tname' title='BE-12 - Backlog'>BE-12 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>26/08-27/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:41.75%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-14' target='_blank'>SPQM-14</a></td>
-      <td class='tname' title='BE-13 - Backlog'>BE-13 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>28/08-01/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:43.69%;width:4.38%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-15' target='_blank'>SPQM-15</a></td>
-      <td class='tname' title='BE-14 - Backlog'>BE-14 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 20h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>02/09-03/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>20h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:48.54%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-16' target='_blank'>SPQM-16</a></td>
-      <td class='tname' title='BE-15 - Backlog'>BE-15 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>04/09-15/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:50.49%;width:11.18%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-17' target='_blank'>SPQM-17</a></td>
-      <td class='tname' title='BE-16 - Backlog'>BE-16 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>16/09-17/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:62.14%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-18' target='_blank'>SPQM-18</a></td>
-      <td class='tname' title='BE-17 - Backlog'>BE-17 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>18/09-22/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:64.08%;width:4.38%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-19' target='_blank'>SPQM-19</a></td>
-      <td class='tname' title='BE-18 - Backlog'>BE-18 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 24h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>23/09-24/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>24h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:68.93%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-20' target='_blank'>SPQM-20</a></td>
-      <td class='tname' title='BE-19 - Backlog'>BE-19 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>25/09-29/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:70.87%;width:4.38%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-21' target='_blank'>SPQM-21</a></td>
-      <td class='tname' title='BE-20 - Backlog'>BE-20 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>30/09-01/10</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:75.73%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-22' target='_blank'>SPQM-22</a></td>
-      <td class='tname' title='BE-21 - Backlog'>BE-21 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>02/10-06/10</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:77.67%;width:4.38%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-23' target='_blank'>SPQM-23</a></td>
-      <td class='tname' title='BE-22 - Backlog'>BE-22 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>07/10-08/10</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:82.52%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-24' target='_blank'>SPQM-24</a></td>
-      <td class='tname' title='BE-23 - Backlog'>BE-23 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>09/10-13/10</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:84.47%;width:4.38%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-25' target='_blank'>SPQM-25</a></td>
-      <td class='tname' title='BE-24 - Backlog'>BE-24 - Backlog</td>
-      <td class='town'>D. Vivarelli</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>14/10-15/10</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:26.21%;width:10.68%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:3.88%;background:rgba(248,81,73,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:89.32%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr></tbody>
-    </table>
+  <div class="critical-note">
+    <b>Critical path:</b> la coda Backend (David Vivarelli) è il vincolo dominante: termina il <b>2026-10-01</b>,
+    dopo la coda Frontend (Marco Caiella, 2026-09-28 incl. Gestione progetto/Codereview).
+    Il Bug fixing finale (non assegnato) parte solo a chiusura di entrambe le code e porta la fine progetto al
+    <b>2026-10-08</b>. Ritardi sulla coda David (es. ferie 10&ndash;21/08 e 07&ndash;11/09) si propagano 1:1 sulla data di fine.
   </div>
 
-  <div class='sec'>
-    <div class='sct'>Frontend + governance ? M. Caiella</div>
-    <table>
-      <thead><tr>
-        <th style='width:75px'>Ticket</th>
-        <th style='width:200px'>Task</th>
-        <th style='width:85px'>Owner</th>
-        <th style='width:85px'>Stato</th>
-        <th style='width:150px'>Stimato vs Registrato</th>
-        <th style='width:90px'>Date piano / reale</th>
-        <th style='width:80px;text-align:center'>Rimanente</th>
-        <th><div class='tick-header'><span style='left:0.00%'>14/07</span><span style='left:6.80%'>21/07</span><span style='left:13.59%'>28/07</span><span style='left:20.39%'>04/08</span><span style='left:27.18%'>11/08</span><span style='left:33.98%'>18/08</span><span style='left:40.78%'>25/08</span><span style='left:47.57%'>01/09</span><span style='left:54.37%'>08/09</span><span style='left:61.17%'>15/09</span><span style='left:67.96%'>22/09</span><span style='left:74.76%'>29/09</span><span style='left:81.55%'>06/10</span><span style='left:88.35%'>13/10</span><span style='left:95.15%'>20/10</span></div></th>
-      </tr></thead>
-      <tbody><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-27' target='_blank'>SPQM-27</a></td>
-      <td class='tname' title='FE-01 - Bootstrap frontend Angular'>FE-01 - Bootstrap frontend Angular</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge prog'>In corso</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:67%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>14/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 14/07-14/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:0.00%;width:16.03%;background:#388bfd'></div>
-          <div class='wl-bar' style='left:0.00%;width:0.50%' title='Worklog: 14/07-14/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-28' target='_blank'>SPQM-28</a></td>
-      <td class='tname' title='FE-02 - Integrazione OpenAPI client'>FE-02 - Integrazione OpenAPI client</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge done'>Fatto</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>15/07-27/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:0.97%;width:12.15%;background:#3fb950'></div>
-          <div class='wl-bar' style='left:0.97%;width:12.15%' title='Worklog: 15/07-27/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-31' target='_blank'>SPQM-31</a></td>
-      <td class='tname' title='FE-05 - Routing e guards per ruolo'>FE-05 - Routing e guards per ruolo</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge prog'>In corso</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:50%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>4h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>16/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 16/07-16/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:1.94%;width:14.09%;background:#388bfd'></div>
-          <div class='wl-bar' style='left:1.94%;width:0.50%' title='Worklog: 16/07-16/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-32' target='_blank'>SPQM-32</a></td>
-      <td class='tname' title='FE-06 - Shell applicativa e shared'>FE-06 - Shell applicativa e shared</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge prog'>In corso</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:38%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>3h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>16/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 16/07-16/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>5h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:1.94%;width:14.09%;background:#388bfd'></div>
-          <div class='wl-bar' style='left:1.94%;width:0.50%' title='Worklog: 16/07-16/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-33' target='_blank'>SPQM-33</a></td>
-      <td class='tname' title='FE-07 - Dashboard SD'>FE-07 - Dashboard SD</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge prog'>In corso</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:50%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>6h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>15/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 15/07-23/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>6h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:0.97%;width:15.06%;background:#388bfd'></div>
-          <div class='wl-bar' style='left:0.97%;width:8.27%' title='Worklog: 15/07-23/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-34' target='_blank'>SPQM-34</a></td>
-      <td class='tname' title='FE-08 - Form dinamico'>FE-08 - Form dinamico</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge prog'>In corso</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:30%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>6h / 20h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>23/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 23/07-27/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>14h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:8.74%;width:7.30%;background:#388bfd'></div>
-          <div class='wl-bar' style='left:8.74%;width:4.38%' title='Worklog: 23/07-27/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-38' target='_blank'>SPQM-38</a></td>
-      <td class='tname' title='FE-12 - Layout area Admin'>FE-12 - Layout area Admin</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge prog'>In corso</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:50%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>4h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>27/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 27/07-27/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:12.62%;width:3.41%;background:#388bfd'></div>
-          <div class='wl-bar' style='left:12.62%;width:0.50%' title='Worklog: 27/07-27/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-42' target='_blank'>SPQM-42</a></td>
-      <td class='tname' title='FE-16 - Dashboard DBA'>FE-16 - Dashboard DBA</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge prog'>In corso</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:50%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>4h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>24/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 24/07-24/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:9.71%;width:6.33%;background:#388bfd'></div>
-          <div class='wl-bar' style='left:9.71%;width:0.50%' title='Worklog: 24/07-24/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-43' target='_blank'>SPQM-43</a></td>
-      <td class='tname' title='FE-17 - Editor SQL DBA'>FE-17 - Editor SQL DBA</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge prog'>In corso</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:19%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>3h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>24/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 24/07-24/07</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>13h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:9.71%;width:6.33%;background:#388bfd'></div>
-          <div class='wl-bar' style='left:9.71%;width:0.50%' title='Worklog: 24/07-24/07'></div>
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-29' target='_blank'>SPQM-29</a></td>
-      <td class='tname' title='FE-03 - Gestione bootstrap autenticazione'>FE-03 - Gestione bootstrap autenticazione</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>03/08-04/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:19.42%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-30' target='_blank'>SPQM-30</a></td>
-      <td class='tname' title='FE-04 - Interceptor e sicurezza FE'>FE-04 - Interceptor e sicurezza FE</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>05/08-06/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:21.36%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-35' target='_blank'>SPQM-35</a></td>
-      <td class='tname' title='FE-09 - Modale SD esecuzione template'>FE-09 - Modale SD esecuzione template</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>07/08-10/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:23.30%;width:3.41%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-36' target='_blank'>SPQM-36</a></td>
-      <td class='tname' title='FE-10 - Flusso UI preview/confirm'>FE-10 - Flusso UI preview/confirm</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>11/08-12/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:27.18%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-37' target='_blank'>SPQM-37</a></td>
-      <td class='tname' title='FE-11 - Stato frontend esecuzioni'>FE-11 - Stato frontend esecuzioni</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>13/08-14/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:29.13%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-39' target='_blank'>SPQM-39</a></td>
-      <td class='tname' title='FE-13 - Area Admin esecuzione template'>FE-13 - Area Admin esecuzione template</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>17/08-18/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:33.01%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-40' target='_blank'>SPQM-40</a></td>
-      <td class='tname' title='FE-14 - Area Admin gestione permessi'>FE-14 - Area Admin gestione permessi</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 20h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>19/08-20/08</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>20h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:34.95%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-41' target='_blank'>SPQM-41</a></td>
-      <td class='tname' title='FE-15 - Toggle grant/revoke'>FE-15 - Toggle grant/revoke</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>07/09-08/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:53.40%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-44' target='_blank'>SPQM-44</a></td>
-      <td class='tname' title='FE-18 - Pannello risultati analisi'>FE-18 - Pannello risultati analisi</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>09/09-10/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:55.34%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-45' target='_blank'>SPQM-45</a></td>
-      <td class='tname' title='FE-19 - Form metadati template'>FE-19 - Form metadati template</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>11/09-14/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:57.28%;width:3.41%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-46' target='_blank'>SPQM-46</a></td>
-      <td class='tname' title='FE-20 - State machine salvataggio'>FE-20 - State machine salvataggio</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>15/09-16/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:61.17%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-47' target='_blank'>SPQM-47</a></td>
-      <td class='tname' title='FE-21 - Delete template DBA'>FE-21 - Delete template DBA</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 4h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>17/09-18/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:63.11%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-48' target='_blank'>SPQM-48</a></td>
-      <td class='tname' title='FE-22 - Gestione errori e feedback'>FE-22 - Gestione errori e feedback</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 4h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>21/09-22/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:66.99%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-49' target='_blank'>SPQM-49</a></td>
-      <td class='tname' title='FE-24 - Packaging readiness'>FE-24 - Packaging readiness</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 4h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>23/09-24/09</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:68.93%;width:1.47%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-50' target='_blank'>SPQM-50</a></td>
-      <td class='tname' title='Gestione progetto'>Gestione progetto</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 20h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>25/09-01/10</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>20h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:70.87%;width:6.33%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr><tr>
-      <td><a href='https://jira.gigroup.com/jira/browse/SPQM-51' target='_blank'>SPQM-51</a></td>
-      <td class='tname' title='Codereview'>Codereview</td>
-      <td class='town'>M. Caiella</td>
-      <td><span class='badge todo'>Da completare</span></td>
-      <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 24h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>02/10-06/10</span></td>
-      
-      
-      <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>24h</td>
-      <td class='barcell'>
-        <div class='track'>
-          <div class='abs' style='left:36.89%;width:13.59%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:1.94%;background:rgba(88,166,255,.22)'></div>
-          <div class='today-inner' style='left:15.53%'></div>
-          <div class='bar planned' style='left:77.67%;width:4.38%;background:#6e7681'></div>
-          
-        </div>
-      </td>
-    </tr></tbody>
-    </table>
+  <table class="summary">
+    <thead><tr><th>Stato</th><th>Numero sottotask</th><th>% sul totale</th></tr></thead>
+    <tbody>
+      <tr><td>✅ Fatto</td><td>6</td><td>12%</td></tr>
+      <tr><td>🔄 In corso</td><td>11</td><td>22%</td></tr>
+      <tr><td>⏳ Da completare</td><td>33</td><td>66%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <div><span class="dot" style="background:var(--done)"></span>Fatto</div>
+    <div><span class="dot" style="background:var(--progress)"></span>In corso</div>
+    <div><span class="dot" style="background:var(--todo)"></span>Da completare</div>
+    <div><span class="dot" style="background:#dc2626"></span>Linea "Oggi"</div>
+    <div><span class="dot" style="background:repeating-linear-gradient(45deg,#dc2626,#dc2626 3px,#fff 3px,#fff 6px)"></span>Ferie/Malattia</div>
+  </div>
+
+  <div class="panel" id="ganttPanel">
+    <div id="chartHeaderTop" class="chartHeader"></div>
+    <div id="ganttBody"></div>
   </div>
 </div>
+<footer>Generato automaticamente &middot; Fonte dati: Jira SPQM-1 &middot; 2026-07-31</footer>
+
+<script>
+const DATA = {"today": "2026-07-31", "overall_start": "2026-07-14", "overall_finish": "2026-10-08", "counts": {"Fatto": 6, "In corso": 11, "Da completare": 33}, "group_finish": {"BE": "2026-10-01", "FE": "2026-09-18", "Progetto": "2026-10-08"}, "david_finish": "2026-10-01", "marco_finish": "2026-09-28", "bug_finish": "2026-10-08", "tasks": [{"key": "SPQM-2", "summary": "BE-01 - Impostazione progetto backend multi-modulo", "status": "Fatto", "assignee": "David Vivarelli", "orig_est": "1d", "remaining": "0m", "spent": "1d", "group": "BE", "start": "2026-07-14", "end": "2026-07-14", "pct": 100}, {"key": "SPQM-3", "summary": "BE-02 - Definizione contratti API OpenAPI", "status": "In corso", "assignee": "Marco Caiella", "orig_est": "1d 4h", "remaining": "4h", "spent": "1d", "group": "BE", "start": "2026-07-14", "end": "2026-07-31", "pct": 67}, {"key": "SPQM-4", "summary": "BE-03 - Sicurezza applicativa e JWT", "status": "Fatto", "assignee": "David Vivarelli", "orig_est": "2d", "remaining": "0m", "spent": "2d", "group": "BE", "start": "2026-07-14", "end": "2026-07-16", "pct": 100}, {"key": "SPQM-5", "summary": "BE-04 - Configurazione registry database target", "status": "Fatto", "assignee": "David Vivarelli", "orig_est": "1d", "remaining": "0m", "spent": "1d", "group": "BE", "start": "2026-07-16", "end": "2026-07-20", "pct": 100}, {"key": "SPQM-6", "summary": "BE-05 - Modellazione persistenza MongoDB", "status": "In corso", "assignee": "David Vivarelli", "orig_est": "1d 4h", "remaining": "0m", "spent": "1d 4h", "group": "BE", "start": "2026-07-20", "end": "2026-07-21", "pct": 100}, {"key": "SPQM-7", "summary": "BE-06 - Gestione anagrafica template DBA", "status": "Fatto", "assignee": "David Vivarelli", "orig_est": "1d 4h", "remaining": "0m", "spent": "1d 4h", "group": "BE", "start": "2026-07-21", "end": "2026-07-23", "pct": 100}, {"key": "SPQM-8", "summary": "BE-07 - Soft delete template", "status": "Fatto", "assignee": "David Vivarelli", "orig_est": "1d", "remaining": "0m", "spent": "1d", "group": "BE", "start": "2026-07-23", "end": "2026-07-24", "pct": 100}, {"key": "SPQM-9", "summary": "BE-08 - Parsing SQL e validazione strutturale", "status": "In corso", "assignee": "David Vivarelli", "orig_est": "4d", "remaining": "4h", "spent": "3d 4h", "group": "BE", "start": "2026-07-24", "end": "2026-07-31", "pct": 88}, {"key": "SPQM-10", "summary": "BE-09 - Metadata parametri e tipizzazione", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "1d 4h", "remaining": "1d 4h", "spent": null, "group": "BE", "start": "2026-07-31", "end": "2026-08-04", "pct": 0}, {"key": "SPQM-11", "summary": "BE-10 - Analisi template lato DBA", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "2d", "remaining": "2d", "spent": null, "group": "BE", "start": "2026-08-04", "end": "2026-08-06", "pct": 0}, {"key": "SPQM-12", "summary": "BE-11 - Validazione database lato DBA", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "1d 4h", "remaining": "1d 4h", "spent": null, "group": "BE", "start": "2026-08-06", "end": "2026-08-24", "pct": 0}, {"key": "SPQM-13", "summary": "BE-12 - Gestione utenti SD da GIREX", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "2d", "remaining": "2d", "spent": null, "group": "BE", "start": "2026-08-24", "end": "2026-08-26", "pct": 0}, {"key": "SPQM-14", "summary": "BE-13 - Gestione permessi Admin", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "2d", "remaining": "2d", "spent": null, "group": "BE", "start": "2026-08-26", "end": "2026-08-28", "pct": 0}, {"key": "SPQM-15", "summary": "BE-14 - Integrazione Securden", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "2d 4h", "remaining": "2d 4h", "spent": null, "group": "BE", "start": "2026-08-28", "end": "2026-09-02", "pct": 0}, {"key": "SPQM-16", "summary": "BE-15 - Motore di connessione SQL Server", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "1d", "remaining": "1d", "spent": null, "group": "BE", "start": "2026-09-02", "end": "2026-09-03", "pct": 0}, {"key": "SPQM-17", "summary": "BE-16 - Lista template eseguibili", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "1d", "remaining": "1d", "spent": null, "group": "BE", "start": "2026-09-03", "end": "2026-09-04", "pct": 0}, {"key": "SPQM-18", "summary": "BE-17 - Validazione runtime permessi e precondizioni", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "1d", "remaining": "1d", "spent": null, "group": "BE", "start": "2026-09-04", "end": "2026-09-14", "pct": 0}, {"key": "SPQM-19", "summary": "BE-18 - Preview engine per UPDATE e DELETE", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "3d", "remaining": "3d", "spent": null, "group": "BE", "start": "2026-09-14", "end": "2026-09-17", "pct": 0}, {"key": "SPQM-20", "summary": "BE-19 - Gestione tecnica preview per INSERT", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "1d", "remaining": "1d", "spent": null, "group": "BE", "start": "2026-09-17", "end": "2026-09-21", "pct": 0}, {"key": "SPQM-21", "summary": "BE-20 - Sessioni di esecuzione con executionUuid", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "1d 4h", "remaining": "1d 4h", "spent": null, "group": "BE", "start": "2026-09-21", "end": "2026-09-22", "pct": 0}, {"key": "SPQM-22", "summary": "BE-21 - Confirm engine DML reale", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "2d", "remaining": "2d", "spent": null, "group": "BE", "start": "2026-09-22", "end": "2026-09-24", "pct": 0}, {"key": "SPQM-23", "summary": "BE-22 - Audit append-only", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "1d 4h", "remaining": "1d 4h", "spent": null, "group": "BE", "start": "2026-09-24", "end": "2026-09-28", "pct": 0}, {"key": "SPQM-24", "summary": "BE-23 - Gestione errori", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "1d", "remaining": "1d", "spent": null, "group": "BE", "start": "2026-09-28", "end": "2026-09-29", "pct": 0}, {"key": "SPQM-25", "summary": "BE-25 - Packaging e readiness al deploy", "status": "Da completare", "assignee": "David Vivarelli", "orig_est": "2d", "remaining": "2d", "spent": null, "group": "BE", "start": "2026-09-29", "end": "2026-10-01", "pct": 0}, {"key": "SPQM-27", "summary": "FE-01 - Bootstrap progetto frontend Angular", "status": "In corso", "assignee": "Marco Caiella", "orig_est": "1d 4h", "remaining": "4h", "spent": "1d", "group": "FE", "start": "2026-07-14", "end": "2026-07-31", "pct": 67}, {"key": "SPQM-28", "summary": "FE-02 - Integrazione OpenAPI client generator", "status": "Fatto", "assignee": "Marco Caiella", "orig_est": "1d", "remaining": "0m", "spent": "1d", "group": "FE", "start": "2026-07-15", "end": "2026-07-16", "pct": 100}, {"key": "SPQM-29", "summary": "FE-03 - Gestione bootstrap autenticazione", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "1d 4h", "remaining": "1d 4h", "spent": null, "group": "FE", "start": "2026-07-31", "end": "2026-08-04", "pct": 0}, {"key": "SPQM-30", "summary": "FE-04 - Interceptor e gestione sicurezza FE", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "1d", "remaining": "1d", "spent": null, "group": "FE", "start": "2026-08-04", "end": "2026-08-05", "pct": 0}, {"key": "SPQM-31", "summary": "FE-05 - Routing e guards per ruolo", "status": "In corso", "assignee": "Marco Caiella", "orig_est": "1d", "remaining": "4h", "spent": "4h", "group": "FE", "start": "2026-07-16", "end": "2026-08-05", "pct": 50}, {"key": "SPQM-32", "summary": "FE-06 - Shell applicativa e componenti shared", "status": "In corso", "assignee": "Marco Caiella", "orig_est": "1d", "remaining": "5h", "spent": "3h", "group": "FE", "start": "2026-07-17", "end": "2026-08-06", "pct": 38}, {"key": "SPQM-33", "summary": "FE-07 - Dashboard SD: lista template assegnati", "status": "In corso", "assignee": "Marco Caiella", "orig_est": "1d 4h", "remaining": "6h", "spent": "6h", "group": "FE", "start": "2026-07-17", "end": "2026-08-07", "pct": 50}, {"key": "SPQM-34", "summary": "FE-08 - Form dinamico da metadata backend", "status": "In corso", "assignee": "Marco Caiella", "orig_est": "2d 4h", "remaining": "1d 6h", "spent": "6h", "group": "FE", "start": "2026-07-23", "end": "2026-08-11", "pct": 30}, {"key": "SPQM-35", "summary": "FE-09 - Modale SD di esecuzione template", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "1d 4h", "remaining": "1d 4h", "spent": null, "group": "FE", "start": "2026-08-11", "end": "2026-08-12", "pct": 0}, {"key": "SPQM-36", "summary": "FE-10 - Flusso UI preview/confirm SD", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "2d", "remaining": "2d", "spent": null, "group": "FE", "start": "2026-08-12", "end": "2026-08-14", "pct": 0}, {"key": "SPQM-37", "summary": "FE-11 - Stato frontend per esecuzioni", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "1d 4h", "remaining": "1d 4h", "spent": null, "group": "FE", "start": "2026-08-14", "end": "2026-08-18", "pct": 0}, {"key": "SPQM-38", "summary": "FE-12 - Layout e navigazione area Admin", "status": "In corso", "assignee": "Marco Caiella", "orig_est": "1d", "remaining": "4h", "spent": "4h", "group": "FE", "start": "2026-07-24", "end": "2026-08-18", "pct": 50}, {"key": "SPQM-39", "summary": "FE-13 - Area Admin esecuzione template", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "1d", "remaining": "1d", "spent": null, "group": "FE", "start": "2026-08-18", "end": "2026-08-19", "pct": 0}, {"key": "SPQM-40", "summary": "FE-14 - Area Admin gestione permessi", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "2d 4h", "remaining": "2d 4h", "spent": null, "group": "FE", "start": "2026-08-19", "end": "2026-09-08", "pct": 0}, {"key": "SPQM-41", "summary": "FE-15 - Toggle realtime grant/revoke Admin", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "1d", "remaining": "1d", "spent": null, "group": "FE", "start": "2026-09-08", "end": "2026-09-09", "pct": 0}, {"key": "SPQM-42", "summary": "FE-16 - Dashboard DBA libreria template", "status": "In corso", "assignee": "Marco Caiella", "orig_est": "1d", "remaining": "4h", "spent": "4h", "group": "FE", "start": "2026-07-24", "end": "2026-09-09", "pct": 50}, {"key": "SPQM-43", "summary": "FE-17 - Editor SQL DBA", "status": "In corso", "assignee": "Marco Caiella", "orig_est": "2d", "remaining": "1d 5h", "spent": "3h", "group": "FE", "start": "2026-07-27", "end": "2026-09-11", "pct": 19}, {"key": "SPQM-44", "summary": "FE-18 - Pannello risultati analisi DBA", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "2d", "remaining": "2d", "spent": null, "group": "FE", "start": "2026-09-11", "end": "2026-09-15", "pct": 0}, {"key": "SPQM-45", "summary": "FE-19 - Form metadati template DBA", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "1d", "remaining": "1d", "spent": null, "group": "FE", "start": "2026-09-15", "end": "2026-09-16", "pct": 0}, {"key": "SPQM-46", "summary": "FE-20 - State machine salvataggio template DBA", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "1d", "remaining": "1d", "spent": null, "group": "FE", "start": "2026-09-16", "end": "2026-09-17", "pct": 0}, {"key": "SPQM-47", "summary": "FE-21 - Delete template DBA", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "4h", "remaining": "4h", "spent": null, "group": "FE", "start": "2026-09-17", "end": "2026-09-17", "pct": 0}, {"key": "SPQM-48", "summary": "FE-22 - Gestione errori e feedback utente", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "4h", "remaining": "4h", "spent": null, "group": "FE", "start": "2026-09-17", "end": "2026-09-18", "pct": 0}, {"key": "SPQM-49", "summary": "FE-24 - Packaging e readiness al deploy", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "4h", "remaining": "4h", "spent": null, "group": "FE", "start": "2026-09-18", "end": "2026-09-18", "pct": 0}, {"key": "SPQM-50", "summary": "Gestione progetto", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "2d 4h", "remaining": "2d 4h", "spent": null, "group": "Progetto", "start": "2026-09-18", "end": "2026-09-23", "pct": 0}, {"key": "SPQM-51", "summary": "Codereview", "status": "Da completare", "assignee": "Marco Caiella", "orig_est": "3d", "remaining": "3d", "spent": null, "group": "Progetto", "start": "2026-09-23", "end": "2026-09-28", "pct": 0}, {"key": "SPQM-52", "summary": "Bug fixing", "status": "Da completare", "assignee": "Unassigned", "orig_est": "1w", "remaining": "1w", "spent": null, "group": "Progetto", "start": "2026-10-02", "end": "2026-10-08", "pct": 0}]};
+
+function parseD(s){ const p=s.split('-').map(Number); return new Date(p[0], p[1]-1, p[2]); }
+function fmtD(d){ return d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'}); }
+
+const overallStart = parseD(DATA.overall_start);
+const overallFinish = parseD(DATA.overall_finish);
+const today = parseD(DATA.today);
+
+const DAY_PX = 9;
+function daysBetween(a,b){ return Math.round((b-a)/86400000); }
+const totalDays = daysBetween(overallStart, overallFinish) + 5;
+const chartWidth = totalDays * DAY_PX;
+
+const DAVID_VAC = [["2026-08-10","2026-08-21"],["2026-09-07","2026-09-11"]];
+const MARCO_VAC = [["2026-08-21","2026-09-04"],["2026-07-20","2026-07-22"]];
+
+function xFor(d){ return daysBetween(overallStart, d) * DAY_PX; }
+
+function buildHeader(){
+  const el = document.getElementById('chartHeaderTop');
+  el.style.width = chartWidth + 'px';
+  el.style.position='relative';
+  let d = new Date(overallStart);
+  d.setDate(1);
+  if (d < overallStart) { d.setMonth(d.getMonth()+1); }
+  while (d <= overallFinish) {
+    const x = xFor(d);
+    const line = document.createElement('div');
+    line.className='month-line'; line.style.left=x+'px';
+    el.appendChild(line);
+    const label = document.createElement('div');
+    label.className='month-label'; label.style.left=(x+4)+'px';
+    label.textContent = d.toLocaleDateString('it-IT',{month:'short',year:'numeric'});
+    el.appendChild(label);
+    d.setMonth(d.getMonth()+1);
+  }
+}
+
+function addBackground(track, spanDays){
+  // weekend shading
+  for(let i=0;i<spanDays;i++){
+    const d = new Date(overallStart); d.setDate(d.getDate()+i);
+    if(d.getDay()===0 || d.getDay()===6){
+      const w = document.createElement('div');
+      w.className='weekend';
+      w.style.left = xFor(d)+'px'; w.style.width = DAY_PX+'px';
+      track.appendChild(w);
+    }
+  }
+  // vacation bands
+  function band(ranges){
+    ranges.forEach(([a,b])=>{
+      const da=parseD(a), db=parseD(b);
+      const v=document.createElement('div');
+      v.className='vac';
+      v.style.left = xFor(da)+'px';
+      v.style.width = ((daysBetween(da,db)+1)*DAY_PX)+'px';
+      track.appendChild(v);
+    });
+  }
+  band(DAVID_VAC); band(MARCO_VAC);
+  // today line
+  const t = document.createElement('div');
+  t.className='today-line'; t.style.left = xFor(today)+'px';
+  track.appendChild(t);
+  const tl = document.createElement('div');
+  tl.className='today-label'; tl.style.left=(xFor(today)+4)+'px';
+  tl.textContent='OGGI '+fmtD(today);
+  track.appendChild(tl);
+}
+
+function statusColor(status){
+  if(status==='Fatto') return 'var(--done)';
+  if(status==='In corso') return 'var(--progress)';
+  return 'var(--todo)';
+}
+
+function render(){
+  buildHeader();
+  const body = document.getElementById('ganttBody');
+  const groups = ['BE','FE','Progetto'];
+  const spanDays = totalDays;
+  groups.forEach(g=>{
+    const title = document.createElement('div');
+    title.className='group-title '+g;
+    title.textContent = g + ' — fine prevista ' + fmtD(parseD(DATA.group_finish[g]));
+    body.appendChild(title);
+    DATA.tasks.filter(t=>t.group===g).forEach(t=>{
+      const row = document.createElement('div');
+      row.className='chartRow';
+      const lab = document.createElement('div');
+      lab.className='chartLabelCol rowlabel';
+      lab.innerHTML = '<b>'+t.key+'</b> '+t.summary+' <span style="color:#94a3b8">('+t.assignee+')</span>';
+      row.appendChild(lab);
+      const trackCol = document.createElement('div');
+      trackCol.className='chartTrackCol';
+      trackCol.style.width = chartWidth+'px';
+      const wrap = document.createElement('div');
+      wrap.className='barwrap';
+      wrap.style.width = chartWidth+'px';
+      addBackground(wrap, spanDays);
+      const s = parseD(t.start), e = parseD(t.end);
+      const bar = document.createElement('div');
+      bar.className='bar';
+      bar.title = t.key+' '+t.summary+' | '+t.status+' | '+fmtD(s)+' -> '+fmtD(e)+' | '+t.pct+'%';
+      const bx = xFor(s);
+      const bw = Math.max(DAY_PX, (daysBetween(s,e)+1)*DAY_PX - 2);
+      bar.style.left = bx+'px'; bar.style.width = bw+'px';
+      bar.style.background = statusColor(t.status);
+      bar.style.zIndex = 3;
+      const fill = document.createElement('div');
+      fill.className='bar-fill';
+      fill.style.width = (100-t.pct)+'%';
+      fill.style.left = t.pct+'%';
+      bar.appendChild(fill);
+      wrap.appendChild(bar);
+      trackCol.appendChild(wrap);
+      row.appendChild(trackCol);
+      body.appendChild(row);
+    });
+  });
+}
+render();
+</script>
 </body>
 </html>
