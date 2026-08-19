@@ -30,6 +30,9 @@ jobs:
           JIRA_PLAN_END_FIELD: ${{ secrets.JIRA_PLAN_END_FIELD }}
         run: python scripts/update_from_jira.py
 
+      - name: Render Gantt HTML
+        run: python scripts/render_gantt.py
+
       - name: Publish Gantt to Confluence
         env:
           CONFLUENCE_BASE_URL: ${{ secrets.CONFLUENCE_BASE_URL }}
