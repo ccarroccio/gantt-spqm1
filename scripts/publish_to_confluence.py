@@ -15,24 +15,28 @@ def request_json(url, email, token, method="GET", payload=None):
     if payload is not None:
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
 
-    req = urllib.request.Request(url, data=body, method=method)
-    req.add_header("Authorization", f"Basic {auth}")
-    req.add_header("Accept", "application/json")
-    req.add_header("Content-Type", "application/json")
-
-    try:
-        with urllib.request.urlopen(req, timeout=60) as response:
-            content = response.read().decode("utf-8")
-            return json.loads(content) if content else {}
-    except HTTPError as exc:
-        detail = exc.read().decode("utf-8", errors="replace")[:500]
-        raise RuntimeError(
-            f"Confluence API HTTP {exc.code} at {url}. "
-            "Check CONFLUENCE_BASE_URL, CONFLUENCE_USER_EMAIL, "
-            f"CONFLUENCE_API_TOKEN and page permissions. Response: {detail}"
-        ) from exc
-    except URLError as exc:
-        raise RuntimeError(f"Confluence API is unreachable: {exc.reason}") from exc
+    errors = []
+    for authorization in (f"Bearer {token}", f"Basic {auth}"):
+        req = urllib.request.Request(url, data=body, method=method)
+        req.add_header("Authorization", authorization)
+        req.add_header("Accept", "application/json")
+        req.add_header("Content-Type", "application/json")
+        try:
+            with urllib.request.urlopen(req, timeout=60) as response:
+                content = response.read().decode("utf-8")
+                return json.loads(content) if content else {}
+        except HTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="replace")[:500]
+            errors.append(f"HTTP {exc.code}: {detail}")
+            if exc.code != 401:
+                break
+        except URLError as exc:
+            raise RuntimeError(f"Confluence API is unreachable: {exc.reason}") from exc
+    raise RuntimeError(
+        f"Confluence API authentication failed at {url}. "
+        "Check CONFLUENCE_BASE_URL, CONFLUENCE_USER_EMAIL, "
+        f"CONFLUENCE_API_TOKEN and page permissions. {' | '.join(errors)}"
+    )
 
 
 def html_macro(html):

@@ -56,26 +56,30 @@ def jira_request(base_url: str, email: str, token: str, jql: str, start_at: int)
 
     url = f"{base_url.rstrip('/')}/rest/api/2/search?{urllib.parse.urlencode(query)}"
     auth = base64.b64encode(f"{email}:{token}".encode("utf-8")).decode("ascii")
+    errors = []
 
-    req = urllib.request.Request(url)
-    req.add_header("Authorization", f"Basic {auth}")
-    req.add_header("Accept", "application/json")
-
-    try:
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            payload = json.loads(resp.read().decode("utf-8"))
-    except HTTPError as exc:
-        detail = exc.read().decode("utf-8", errors="replace")[:300]
-        raise RuntimeError(
-            f"Jira API HTTP {exc.code} at {base_url.rstrip('/')}. "
-            "Check JIRA_BASE_URL, JIRA_USER_EMAIL and JIRA_API_TOKEN. "
-            f"Response: {detail}"
-        ) from exc
-    except URLError as exc:
-        raise RuntimeError(
-            f"Jira API is unreachable at {base_url.rstrip('/')}: {exc.reason}"
-        ) from exc
-    return payload
+    for authorization in (f"Bearer {token}", f"Basic {auth}"):
+        req = urllib.request.Request(url)
+        req.add_header("Authorization", authorization)
+        req.add_header("Accept", "application/json")
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                payload = json.loads(resp.read().decode("utf-8"))
+            return payload
+        except HTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="replace")[:300]
+            errors.append(f"HTTP {exc.code}: {detail}")
+            if exc.code != 401:
+                break
+        except URLError as exc:
+            raise RuntimeError(
+                f"Jira API is unreachable at {base_url.rstrip('/')}: {exc.reason}"
+            ) from exc
+    raise RuntimeError(
+        f"Jira API authentication failed at {base_url.rstrip('/')}. "
+        "Check JIRA_BASE_URL, JIRA_USER_EMAIL and JIRA_API_TOKEN. "
+        + " | ".join(errors)
+    )
 
 
 def load_data():
