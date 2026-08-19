@@ -1,0 +1,83 @@
+import base64
+import json
+import os
+import urllib.request
+from urllib.error import HTTPError, URLError
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+INDEX_FILE = ROOT / "index.html"
+
+
+def request_json(url, email, token, method="GET", payload=None):
+    auth = base64.b64encode(f"{email}:{token}".encode("utf-8")).decode("ascii")
+    body = None
+    if payload is not None:
+        body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+
+    req = urllib.request.Request(url, data=body, method=method)
+    req.add_header("Authorization", f"Basic {auth}")
+    req.add_header("Accept", "application/json")
+    req.add_header("Content-Type", "application/json")
+
+    try:
+        with urllib.request.urlopen(req, timeout=60) as response:
+            content = response.read().decode("utf-8")
+            return json.loads(content) if content else {}
+    except HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")[:500]
+        raise RuntimeError(
+            f"Confluence API HTTP {exc.code} at {url}. "
+            "Check CONFLUENCE_BASE_URL, CONFLUENCE_USER_EMAIL, "
+            f"CONFLUENCE_API_TOKEN and page permissions. Response: {detail}"
+        ) from exc
+    except URLError as exc:
+        raise RuntimeError(f"Confluence API is unreachable: {exc.reason}") from exc
+
+
+def html_macro(html):
+    # Confluence Server's HTML macro expects the page HTML in plain-text-body.
+    return (
+        '<ac:structured-macro ac:name="html">'
+        '<ac:plain-text-body><![CDATA['
+        + html.replace("]]>", "]]]]><![CDATA[>")
+        + "]]></ac:plain-text-body></ac:structured-macro>"
+    )
+
+
+def main():
+    base_url = os.getenv("CONFLUENCE_BASE_URL", "").strip().rstrip("/")
+    email = os.getenv("CONFLUENCE_USER_EMAIL", "").strip()
+    token = os.getenv("CONFLUENCE_API_TOKEN", "").strip()
+    page_id = os.getenv("CONFLUENCE_PAGE_ID", "229969082").strip()
+
+    missing = [
+        name for name, value in {
+            "CONFLUENCE_BASE_URL": base_url,
+            "CONFLUENCE_USER_EMAIL": email,
+            "CONFLUENCE_API_TOKEN": token,
+            "CONFLUENCE_PAGE_ID": page_id,
+        }.items() if not value
+    ]
+    if missing:
+        raise RuntimeError(f"Missing required Confluence configuration: {', '.join(missing)}")
+
+    html = INDEX_FILE.read_text(encoding="utf-8")
+    page_url = f"{base_url}/rest/api/content/{page_id}?expand=version,body.storage"
+    page = request_json(page_url, email, token)
+    version = int(page["version"]["number"])
+    title = page["title"]
+
+    payload = {
+        "id": page_id,
+        "type": "page",
+        "title": title,
+        "version": {"number": version + 1, "minorEdit": True},
+        "body": {"storage": {"value": html_macro(html), "representation": "storage"}},
+    }
+    request_json(f"{base_url}/rest/api/content/{page_id}", email, token, "PUT", payload)
+    print(f"Updated Confluence page {page_id} to version {version + 1}.")
+
+
+if __name__ == "__main__":
+    main()
