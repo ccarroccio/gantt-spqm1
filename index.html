@@ -35,7 +35,6 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
 .bar.planned{position:absolute;top:4px;height:8px;border-radius:4px;z-index:3;opacity:.85}
 /* Barra worklog reale (in basso, azzurra chiara) */
 .wl-bar{position:absolute;top:16px;height:6px;border-radius:3px;background:#79c0ff;opacity:.9;z-index:3}
-.abs{position:absolute;top:0;bottom:0;z-index:1;border-radius:2px}
 .today-inner{position:absolute;top:-3px;bottom:-3px;width:2px;background:#f85149;z-index:5;border-radius:1px}
 .tick-header{position:relative;height:16px;min-width:380px;margin:0 4px 2px}
 .tick-header span{position:absolute;font-size:9px;color:#484f58;transform:translateX(-50%);white-space:nowrap}
@@ -53,10 +52,7 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
   <div class='card'><b style='color:#f0883e'>50</b>Totale</div>
 </div>
 <div class='main'>
-  <div class='legend'>
-    <span><span class='ldot' style='background:#3fb950'></span>Pianificato: Fatto</span>
-    <span><span class='ldot' style='background:#388bfd'></span>Pianificato: In corso</span>
-    <span><span class='ldot' style='background:#6e7681'></span>Pianificato: Da fare</span>
+  <div class='legend'>
     <span><span class='ldot' style='background:#79c0ff;height:6px'></span>Worklog reale</span>
     <span><span class='ldot' style='background:#f85149;width:2px;border-radius:0'></span>Oggi</span>
     <span style='margin-left:8px'>Stimato/Registrato: <span style='color:#3fb950'>verde</span>=in linea &nbsp; <span style='color:#f0883e'>arancione</span>=sforamento</span>
@@ -72,7 +68,7 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
         <th style='width:85px'>Owner</th>
         <th style='width:85px'>Stato</th>
         <th style='width:150px'>Stimato vs Registrato</th>
-        <th style='width:90px'>Date piano / reale</th>
+        <th style='width:90px'>Date reali</th>
         <th style='width:80px;text-align:center'>Rimanente</th>
         <th><div class='tick-header'><span style='left:0.00%'>14/07</span><span style='left:6.80%'>21/07</span><span style='left:13.59%'>28/07</span><span style='left:20.39%'>04/08</span><span style='left:27.18%'>11/08</span><span style='left:33.98%'>18/08</span><span style='left:40.78%'>25/08</span><span style='left:47.57%'>01/09</span><span style='left:54.37%'>08/09</span><span style='left:61.17%'>15/09</span><span style='left:67.96%'>22/09</span><span style='left:74.76%'>29/09</span><span style='left:81.55%'>06/10</span><span style='left:88.35%'>13/10</span><span style='left:95.15%'>20/10</span></div></th>
       </tr></thead>
@@ -82,15 +78,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>14/07-14/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 14/07-14/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>14/07-14/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:0.00%;width:0.50%;background:#3fb950'></div>
           <div class='wl-bar' style='left:0.00%;width:0.50%' title='Worklog: 14/07-14/07'></div>
         </div>
       </td>
@@ -100,15 +94,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>16h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>15/07-16/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 15/07-16/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>15/07-16/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:0.97%;width:1.46%;background:#3fb950'></div>
           <div class='wl-bar' style='left:0.97%;width:1.46%' title='Worklog: 15/07-16/07'></div>
         </div>
       </td>
@@ -118,15 +110,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>17/07-27/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 17/07-27/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>17/07-27/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:2.91%;width:10.19%;background:#3fb950'></div>
           <div class='wl-bar' style='left:2.91%;width:10.19%' title='Worklog: 17/07-27/07'></div>
         </div>
       </td>
@@ -136,15 +126,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge prog'>In corso</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>12h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>22/07-23/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 22/07-23/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>22/07-23/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:7.77%;width:1.46%;background:#388bfd'></div>
           <div class='wl-bar' style='left:7.77%;width:1.46%' title='Worklog: 22/07-23/07'></div>
         </div>
       </td>
@@ -154,15 +142,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>12h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>24/07-27/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 24/07-27/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>24/07-27/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:9.71%;width:3.40%;background:#3fb950'></div>
           <div class='wl-bar' style='left:9.71%;width:3.40%' title='Worklog: 24/07-27/07'></div>
         </div>
       </td>
@@ -172,15 +158,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>27/07-27/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 27/07-27/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>27/07-27/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:12.62%;width:0.50%;background:#3fb950'></div>
           <div class='wl-bar' style='left:12.62%;width:0.50%' title='Worklog: 27/07-27/07'></div>
         </div>
       </td>
@@ -190,15 +174,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge prog'>In corso</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:88%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>28h / 32h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>28/07-24/08</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 28/07-31/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>28/07-31/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:13.59%;width:26.70%;background:#388bfd'></div>
           <div class='wl-bar' style='left:13.59%;width:3.40%' title='Worklog: 28/07-31/07'></div>
         </div>
       </td>
@@ -208,15 +190,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>24/08-25/08</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:39.81%;width:1.46%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -225,15 +205,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>26/08-27/08</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:41.75%;width:1.46%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -242,15 +220,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>28/08-31/08</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:43.69%;width:3.40%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -259,15 +235,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>01/09-02/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:47.57%;width:1.46%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -276,15 +250,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>03/09-14/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:49.51%;width:11.17%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -293,15 +265,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 20h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>14/09-16/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>20h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:60.19%;width:2.43%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -310,15 +280,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>17/09-17/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:63.11%;width:0.50%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -327,15 +295,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>18/09-21/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:64.08%;width:3.40%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -344,15 +310,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>21/09-22/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:66.99%;width:1.46%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -361,15 +325,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 24h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>22/09-25/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>24h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:67.96%;width:3.40%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -378,15 +340,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>28/09-28/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:73.79%;width:0.50%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -395,15 +355,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>29/09-30/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:74.76%;width:1.46%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -412,15 +370,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>30/09-02/10</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:75.73%;width:2.43%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -429,15 +385,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>05/10-06/10</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>12h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:80.58%;width:1.46%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -446,15 +400,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>06/10-07/10</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:81.55%;width:1.46%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -463,15 +415,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>D. Vivarelli</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>07/10-09/10</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>16h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:26.21%;width:11.17%;background:rgba(248,81,73,.22)'></div><div class='abs' style='left:53.40%;width:4.37%;background:rgba(248,81,73,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:82.52%;width:2.43%;background:#6e7681'></div>
         </div>
       </td>
     </tr></tbody>
@@ -487,7 +437,7 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
         <th style='width:85px'>Owner</th>
         <th style='width:85px'>Stato</th>
         <th style='width:150px'>Stimato vs Registrato</th>
-        <th style='width:90px'>Date piano / reale</th>
+        <th style='width:90px'>Date reali</th>
         <th style='width:80px;text-align:center'>Rimanente</th>
         <th><div class='tick-header'><span style='left:0.00%'>14/07</span><span style='left:6.80%'>21/07</span><span style='left:13.59%'>28/07</span><span style='left:20.39%'>04/08</span><span style='left:27.18%'>11/08</span><span style='left:33.98%'>18/08</span><span style='left:40.78%'>25/08</span><span style='left:47.57%'>01/09</span><span style='left:54.37%'>08/09</span><span style='left:61.17%'>15/09</span><span style='left:67.96%'>22/09</span><span style='left:74.76%'>29/09</span><span style='left:81.55%'>06/10</span><span style='left:88.35%'>13/10</span><span style='left:95.15%'>20/10</span></div></th>
       </tr></thead>
@@ -497,15 +447,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge prog'>In corso</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:67%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>14/07-20/08</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 14/07-14/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>14/07-14/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:0.00%;width:36.41%;background:#388bfd'></div>
           <div class='wl-bar' style='left:0.00%;width:0.50%' title='Worklog: 14/07-14/07'></div>
         </div>
       </td>
@@ -515,15 +463,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>15/07-27/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 15/07-27/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>15/07-27/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:0.97%;width:12.14%;background:#3fb950'></div>
           <div class='wl-bar' style='left:0.97%;width:12.14%' title='Worklog: 15/07-27/07'></div>
         </div>
       </td>
@@ -533,15 +479,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>16/07-29/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 16/07-29/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>16/07-29/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:1.94%;width:13.11%;background:#3fb950'></div>
           <div class='wl-bar' style='left:1.94%;width:13.11%' title='Worklog: 16/07-29/07'></div>
         </div>
       </td>
@@ -551,15 +495,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge prog'>In corso</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:62%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>5h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>16/07-07/09</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 16/07-31/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>16/07-31/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>3h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:1.94%;width:51.94%;background:#388bfd'></div>
           <div class='wl-bar' style='left:1.94%;width:15.05%' title='Worklog: 16/07-31/07'></div>
         </div>
       </td>
@@ -569,15 +511,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge prog'>In corso</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:50%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>6h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>15/07-08/09</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 15/07-23/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>15/07-23/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>6h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:0.97%;width:53.88%;background:#388bfd'></div>
           <div class='wl-bar' style='left:0.97%;width:8.25%' title='Worklog: 15/07-23/07'></div>
         </div>
       </td>
@@ -587,15 +527,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>20h / 20h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>23/07-06/08</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 23/07-06/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>23/07-06/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:8.74%;width:14.08%;background:#3fb950'></div>
           <div class='wl-bar' style='left:8.74%;width:14.08%' title='Worklog: 23/07-06/08'></div>
         </div>
       </td>
@@ -605,15 +543,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>27/07-04/08</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 27/07-04/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>27/07-04/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:12.62%;width:8.25%;background:#3fb950'></div>
           <div class='wl-bar' style='left:12.62%;width:8.25%' title='Worklog: 27/07-04/08'></div>
         </div>
       </td>
@@ -623,15 +559,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>24/07-10/08</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 24/07-10/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>24/07-10/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:9.71%;width:16.99%;background:#3fb950'></div>
           <div class='wl-bar' style='left:9.71%;width:16.99%' title='Worklog: 24/07-10/08'></div>
         </div>
       </td>
@@ -641,15 +575,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge prog'>In corso</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:94%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>15h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>24/07-09/09</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 24/07-11/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>24/07-11/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>1h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:9.71%;width:46.12%;background:#388bfd'></div>
           <div class='wl-bar' style='left:9.71%;width:17.96%' title='Worklog: 24/07-11/08'></div>
         </div>
       </td>
@@ -659,15 +591,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>12h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>28/07-29/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 28/07-29/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>28/07-29/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:13.59%;width:1.46%;background:#3fb950'></div>
           <div class='wl-bar' style='left:13.59%;width:1.46%' title='Worklog: 28/07-29/07'></div>
         </div>
       </td>
@@ -677,15 +607,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>30/07-30/07</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 30/07-30/07</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>30/07-30/07</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:15.53%;width:0.50%;background:#3fb950'></div>
           <div class='wl-bar' style='left:15.53%;width:0.50%' title='Worklog: 30/07-30/07'></div>
         </div>
       </td>
@@ -695,15 +623,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:67%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>18/08-18/08</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 18/08-18/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>18/08-18/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:33.98%;width:0.50%;background:#3fb950'></div>
           <div class='wl-bar' style='left:33.98%;width:0.50%' title='Worklog: 18/08-18/08'></div>
         </div>
       </td>
@@ -713,15 +639,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge prog'>In corso</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:31%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>5h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>03/08-09/09</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 03/08-03/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>03/08-03/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>11h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:19.42%;width:36.41%;background:#388bfd'></div>
           <div class='wl-bar' style='left:19.42%;width:0.50%' title='Worklog: 03/08-03/08'></div>
         </div>
       </td>
@@ -731,15 +655,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge prog'>In corso</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:67%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 12h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>19/08-11/09</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 19/08-19/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>19/08-19/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:34.95%;width:22.82%;background:#388bfd'></div>
           <div class='wl-bar' style='left:34.95%;width:0.50%' title='Worklog: 19/08-19/08'></div>
         </div>
       </td>
@@ -749,15 +671,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>05/08-07/08</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 05/08-07/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>05/08-07/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:21.36%;width:2.43%;background:#3fb950'></div>
           <div class='wl-bar' style='left:21.36%;width:2.43%' title='Worklog: 05/08-07/08'></div>
         </div>
       </td>
@@ -767,15 +687,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 20h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>11/09-15/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>20h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:57.28%;width:4.37%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -784,15 +702,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>15/09-16/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:61.17%;width:1.46%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -801,15 +717,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>16h / 16h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>12/08-13/08</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 12/08-13/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>12/08-13/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:28.16%;width:1.46%;background:#3fb950'></div>
           <div class='wl-bar' style='left:28.16%;width:1.46%' title='Worklog: 12/08-13/08'></div>
         </div>
       </td>
@@ -819,15 +733,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge done'>Fatto</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:100%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>8h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>14/08-17/08</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 14/08-17/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>14/08-17/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#3fb950;vertical-align:middle'>0h ✓</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:30.10%;width:3.40%;background:#3fb950'></div>
           <div class='wl-bar' style='left:30.10%;width:3.40%' title='Worklog: 14/08-17/08'></div>
         </div>
       </td>
@@ -837,15 +749,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 8h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>16/09-17/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>8h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:62.14%;width:1.46%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -854,15 +764,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 4h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>17/09-18/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:63.11%;width:1.46%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -871,15 +779,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 4h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>18/09-18/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:64.08%;width:0.50%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -888,15 +794,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 4h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>18/09-21/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>4h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:64.08%;width:3.40%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -905,15 +809,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge todo'>Da completare</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:0%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>0h / 20h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>21/09-23/09</span></td>
-      
-      
+      <td class='tdate'>-</td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>20h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:66.99%;width:2.43%;background:#6e7681'></div>
         </div>
       </td>
     </tr><tr>
@@ -922,15 +824,13 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
       <td class='town'>M. Caiella</td>
       <td><span class='badge prog'>In corso</span></td>
       <td><div style='display:flex;align-items:center;gap:6px;min-width:130px'><div style='flex:1;background:#21262d;border-radius:3px;height:7px;min-width:60px'><div style='width:58%;height:100%;background:#3fb950;border-radius:3px'></div></div><span style='font-size:10px;white-space:nowrap'>14h / 24h</span></div></td>
-      <td class='tdate'><span style='font-size:10px;color:#8b949e'>03/08-10/09</span><br><span style='font-size:9px;color:#388bfd' title='date reali worklog'>? 03/08-17/08</span></td>
-      
-      
+      <td class='tdate'><span style='font-size:10px;color:#388bfd' title='date reali worklog'>03/08-17/08</span></td>
+
+
       <td style='font-size:11px;text-align:center;color:#8b949e;vertical-align:middle'>10h</td>
       <td class='barcell'>
         <div class='track'>
-          <div class='abs' style='left:36.89%;width:14.08%;background:rgba(187,128,9,.22)'></div><div class='abs' style='left:5.83%;width:2.43%;background:rgba(88,166,255,.22)'></div>
           <div class='today-inner' style='left:34.95%'></div>
-          <div class='bar planned' style='left:19.42%;width:37.38%;background:#388bfd'></div>
           <div class='wl-bar' style='left:19.42%;width:14.08%' title='Worklog: 03/08-17/08'></div>
         </div>
       </td>
@@ -940,3 +840,4 @@ th{color:#8b949e;background:#161b22;font-size:11px;font-weight:500}
 </div>
 </body>
 </html>
+
