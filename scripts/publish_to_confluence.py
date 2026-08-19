@@ -21,10 +21,18 @@ def request_json(url, email, token, method="GET", payload=None):
         req.add_header("Authorization", authorization)
         req.add_header("Accept", "application/json")
         req.add_header("Content-Type", "application/json")
+        req.add_header("X-Atlassian-Token", "no-check")
+        req.add_header("User-Agent", "gantt-spqm1-github-actions")
         try:
             with urllib.request.urlopen(req, timeout=60) as response:
                 content = response.read().decode("utf-8")
-                return json.loads(content) if content else {}
+                try:
+                    return json.loads(content) if content else {}
+                except json.JSONDecodeError as exc:
+                    raise RuntimeError(
+                        f"Confluence returned non-JSON HTTP {response.status}: "
+                        f"{content[:300]}"
+                    ) from exc
         except HTTPError as exc:
             detail = exc.read().decode("utf-8", errors="replace")[:500]
             errors.append(f"HTTP {exc.code}: {detail}")
