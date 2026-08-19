@@ -2,6 +2,8 @@ name: Update Gantt in Confluence from Jira
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
   schedule:
     - cron: "0 8,14 * * *"
 
