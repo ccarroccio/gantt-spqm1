@@ -3,7 +3,7 @@ name: Update Gantt Data from Jira
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 8,14 * * *"
 
 permissions:
   contents: write
