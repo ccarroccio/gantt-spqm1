@@ -4,6 +4,7 @@ import os
 import sys
 import urllib.parse
 import urllib.request
+from urllib.error import HTTPError, URLError
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -60,8 +61,20 @@ def jira_request(base_url: str, email: str, token: str, jql: str, start_at: int)
     req.add_header("Authorization", f"Basic {auth}")
     req.add_header("Accept", "application/json")
 
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        payload = json.loads(resp.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            payload = json.loads(resp.read().decode("utf-8"))
+    except HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")[:300]
+        raise RuntimeError(
+            f"Jira API HTTP {exc.code} at {base_url.rstrip('/')}. "
+            "Check JIRA_BASE_URL, JIRA_USER_EMAIL and JIRA_API_TOKEN. "
+            f"Response: {detail}"
+        ) from exc
+    except URLError as exc:
+        raise RuntimeError(
+            f"Jira API is unreachable at {base_url.rstrip('/')}: {exc.reason}"
+        ) from exc
     return payload
 
 
@@ -183,15 +196,19 @@ def main():
     base_url = os.getenv("JIRA_BASE_URL", "").strip()
     email = os.getenv("JIRA_USER_EMAIL", "").strip()
     token = os.getenv("JIRA_API_TOKEN", "").strip()
-    jql = os.getenv("JIRA_JQL", "project = SPQM ORDER BY key ASC").strip()
+    jql = os.getenv("JIRA_JQL", "").strip() or "project = SPQM ORDER BY key ASC"
 
     data = load_data()
 
     if not (base_url and email and token):
-        print("Jira credentials not configured. Keeping existing data file.")
-        data.setdefault("meta", {})["lastSync"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        save_data(data)
-        return 0
+        missing = [
+            name for name, value in {
+                "JIRA_BASE_URL": base_url,
+                "JIRA_USER_EMAIL": email,
+                "JIRA_API_TOKEN": token,
+            }.items() if not value
+        ]
+        raise RuntimeError(f"Missing required Jira configuration: {', '.join(missing)}")
 
     issues = []
     start_at = 0
