@@ -2,6 +2,8 @@ name: Update Gantt in Confluence from Jira
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
   schedule:
     - cron: "0 8,14 * * *"
 
@@ -38,7 +40,6 @@ jobs:
           CONFLUENCE_BASE_URL: ${{ secrets.CONFLUENCE_BASE_URL }}
           CONFLUENCE_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
           CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
-          CONFLUENCE_PAGE_ID: ${{ secrets.CONFLUENCE_PAGE_ID }}
         run: python scripts/publish_to_confluence.py
 
       - name: Commit changes
