@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX_FILE = ROOT / "index.html"
 
 
-def request_json(url, email, token, method="GET", payload=None):
+def request_json(url, email, token, method="GET", payload=None, operation="request"):
     auth = base64.b64encode(f"{email}:{token}".encode("utf-8")).decode("ascii")
     body = None
     if payload is not None:
@@ -41,7 +41,7 @@ def request_json(url, email, token, method="GET", payload=None):
         except URLError as exc:
             raise RuntimeError(f"Confluence API is unreachable: {exc.reason}") from exc
     raise RuntimeError(
-        f"Confluence API authentication failed at {url}. "
+        f"Confluence {operation} failed at {url}. "
         "Check CONFLUENCE_BASE_URL, CONFLUENCE_USER_EMAIL, "
         f"CONFLUENCE_API_TOKEN and page permissions. {' | '.join(errors)}"
     )
@@ -54,6 +54,17 @@ def html_macro(html):
         '<ac:plain-text-body><![CDATA['
         + html.replace("]]>", "]]]]><![CDATA[>")
         + "]]></ac:plain-text-body></ac:structured-macro>"
+    )
+
+
+def storage_fallback(html):
+    # Keep the page update valid even when the HTML macro is disabled.
+    title = "Gantt SPQM-1 - Query Manager"
+    return (
+        f"<h1>{title}</h1>"
+        "<p>Il Gantt aggiornato automaticamente e disponibile qui: "
+        "<a href=\"https://ccarroccio.github.io/gantt-spqm1/\">Apri il Gantt</a></p>"
+        "<p>La pagina viene aggiornata automaticamente da Jira.</p>"
     )
 
 
@@ -76,7 +87,7 @@ def main():
 
     html = INDEX_FILE.read_text(encoding="utf-8")
     page_url = f"{base_url}/rest/api/content/{page_id}?expand=version,body.storage"
-    page = request_json(page_url, email, token)
+    page = request_json(page_url, email, token, operation="page read")
     version = int(page["version"]["number"])
     title = page["title"]
 
@@ -87,8 +98,29 @@ def main():
         "version": {"number": version + 1, "minorEdit": True},
         "body": {"storage": {"value": html_macro(html), "representation": "storage"}},
     }
-    request_json(f"{base_url}/rest/api/content/{page_id}", email, token, "PUT", payload)
-    print(f"Updated Confluence page {page_id} to version {version + 1}.")
+    try:
+        request_json(
+            f"{base_url}/rest/api/content/{page_id}",
+            email,
+            token,
+            "PUT",
+            payload,
+            operation="page update with HTML macro",
+        )
+        print(f"Updated Confluence page {page_id} to version {version + 1}.")
+    except RuntimeError as exc:
+        if "HTTP 400" not in str(exc):
+            raise
+        payload["body"]["storage"]["value"] = storage_fallback(html)
+        request_json(
+            f"{base_url}/rest/api/content/{page_id}",
+            email,
+            token,
+            "PUT",
+            payload,
+            operation="page update with fallback content",
+        )
+        print(f"Updated Confluence page {page_id} with fallback content to version {version + 1}.")
 
 
 if __name__ == "__main__":
