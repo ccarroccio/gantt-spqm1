@@ -7,7 +7,7 @@
     "today": "25/08/2026",
     "timezone": "Europe/Rome",
     "autoRefreshMinutes": 10,
-    "lastSync": "2026-08-25T08:38:27Z"
+    "lastSync": "2026-08-25T14:41:44Z"
   },
   "sections": [
     {
@@ -117,70 +117,70 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-10",
           "task": "BE-09 - Metadata parametri e tipizzazione",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "In corso",
           "estimatedHours": 12,
-          "loggedHours": 0,
-          "remainingHours": 12,
+          "loggedHours": 8,
+          "remainingHours": 4,
           "planStart": "24/08",
           "planEnd": "25/08",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "03/08",
+          "actualEnd": "03/08"
         },
         {
           "ticket": "SPQM-11",
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-11",
           "task": "BE-10 - Analisi template lato DBA",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "Fatto",
           "estimatedHours": 16,
-          "loggedHours": 0,
-          "remainingHours": 16,
+          "loggedHours": 16,
+          "remainingHours": 0,
           "planStart": "26/08",
           "planEnd": "27/08",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "04/08",
+          "actualEnd": "05/08"
         },
         {
           "ticket": "SPQM-12",
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-12",
           "task": "BE-11 - Validazione database lato DBA",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "Fatto",
           "estimatedHours": 12,
-          "loggedHours": 0,
-          "remainingHours": 12,
+          "loggedHours": 12,
+          "remainingHours": 0,
           "planStart": "28/08",
           "planEnd": "31/08",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "05/08",
+          "actualEnd": "05/08"
         },
         {
           "ticket": "SPQM-13",
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-13",
           "task": "BE-12 - Gestione utenti SD da GIREX",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "Fatto",
           "estimatedHours": 16,
-          "loggedHours": 0,
-          "remainingHours": 16,
+          "loggedHours": 16,
+          "remainingHours": 0,
           "planStart": "01/09",
           "planEnd": "02/09",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "24/08",
+          "actualEnd": "24/08"
         },
         {
           "ticket": "SPQM-14",
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-14",
           "task": "BE-13 - Gestione permessi Admin",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "Fatto",
           "estimatedHours": 16,
-          "loggedHours": 0,
-          "remainingHours": 16,
+          "loggedHours": 16,
+          "remainingHours": 0,
           "planStart": "03/09",
           "planEnd": "14/09",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "26/08",
+          "actualEnd": "26/08"
         },
         {
           "ticket": "SPQM-15",
@@ -201,14 +201,14 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-16",
           "task": "BE-15 - Motore di connessione SQL Server",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "In corso",
           "estimatedHours": 8,
-          "loggedHours": 0,
-          "remainingHours": 8,
+          "loggedHours": 4,
+          "remainingHours": 4,
           "planStart": "17/09",
           "planEnd": "17/09",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "27/08",
+          "actualEnd": "27/08"
         },
         {
           "ticket": "SPQM-17",
@@ -720,7 +720,7 @@
           "status": "Da completare",
           "estimatedHours": 0,
           "loggedHours": 0,
-          "remainingHours": 371,
+          "remainingHours": 299,
           "planStart": null,
           "planEnd": null,
           "actualStart": null,
