@@ -4,10 +4,10 @@
     "deadline": "16/10/2026",
     "beDeadline": "09/10/2026",
     "feDeadline": "08/10/2026",
-    "today": "27/08/2026",
+    "today": "28/08/2026",
     "timezone": "Europe/Rome",
     "autoRefreshMinutes": 10,
-    "lastSync": "2026-08-27T18:49:17Z"
+    "lastSync": "2026-08-28T19:52:42Z"
   },
   "sections": [
     {
@@ -217,12 +217,12 @@
           "owner": "David Vivarelli",
           "status": "Da completare",
           "estimatedHours": 8,
-          "loggedHours": 0,
-          "remainingHours": 8,
+          "loggedHours": 8,
+          "remainingHours": 0,
           "planStart": "18/09",
           "planEnd": "21/09",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "31/08",
+          "actualEnd": "31/08"
         },
         {
           "ticket": "SPQM-18",
@@ -720,7 +720,7 @@
           "status": "Da completare",
           "estimatedHours": 0,
           "loggedHours": 0,
-          "remainingHours": 299,
+          "remainingHours": 291,
           "planStart": null,
           "planEnd": null,
           "actualStart": null,
