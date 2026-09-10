@@ -7,7 +7,7 @@
     "today": "10/09/2026",
     "timezone": "Europe/Rome",
     "autoRefreshMinutes": 10,
-    "lastSync": "2026-09-10T12:41:43Z"
+    "lastSync": "2026-09-10T17:28:43Z"
   },
   "sections": [
     {
@@ -735,6 +735,20 @@
           "estimatedHours": 40,
           "loggedHours": 0,
           "remainingHours": 40,
+          "planStart": null,
+          "planEnd": null,
+          "actualStart": null,
+          "actualEnd": null
+        },
+        {
+          "ticket": "SPQM-53",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-53",
+          "task": "Registrare nuovo servizio a DB, nuovi claim + associazione utente",
+          "owner": "Marco Caiella",
+          "status": "Da completare",
+          "estimatedHours": 0,
+          "loggedHours": 0,
+          "remainingHours": 0,
           "planStart": null,
           "planEnd": null,
           "actualStart": null,
