@@ -4,10 +4,10 @@
     "deadline": "16/10/2026",
     "beDeadline": "09/10/2026",
     "feDeadline": "08/10/2026",
-    "today": "13/09/2026",
+    "today": "14/09/2026",
     "timezone": "Europe/Rome",
     "autoRefreshMinutes": 10,
-    "lastSync": "2026-09-13T17:14:52Z"
+    "lastSync": "2026-09-14T14:42:59Z"
   },
   "sections": [
     {
@@ -215,7 +215,7 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-17",
           "task": "BE-16 - Lista template eseguibili",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "Fatto",
           "estimatedHours": 8,
           "loggedHours": 8,
           "remainingHours": 0,
@@ -229,70 +229,70 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-18",
           "task": "BE-17 - Validazione runtime permessi e precondizioni",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "In corso",
           "estimatedHours": 8,
-          "loggedHours": 0,
-          "remainingHours": 8,
+          "loggedHours": 4,
+          "remainingHours": 4,
           "planStart": "21/09",
           "planEnd": "22/09",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "01/09",
+          "actualEnd": "01/09"
         },
         {
           "ticket": "SPQM-19",
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-19",
           "task": "BE-18 - Preview engine per UPDATE e DELETE",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "Fatto",
           "estimatedHours": 24,
-          "loggedHours": 0,
-          "remainingHours": 24,
+          "loggedHours": 12,
+          "remainingHours": 12,
           "planStart": "22/09",
           "planEnd": "25/09",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "01/09",
+          "actualEnd": "02/09"
         },
         {
           "ticket": "SPQM-20",
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-20",
           "task": "BE-19 - Gestione tecnica preview per INSERT",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "Fatto",
           "estimatedHours": 8,
-          "loggedHours": 0,
-          "remainingHours": 8,
+          "loggedHours": 4,
+          "remainingHours": 4,
           "planStart": "28/09",
           "planEnd": "28/09",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "03/09",
+          "actualEnd": "03/09"
         },
         {
           "ticket": "SPQM-21",
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-21",
           "task": "BE-20 - Sessioni di esecuzione con executionUuid",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "Fatto",
           "estimatedHours": 12,
-          "loggedHours": 0,
-          "remainingHours": 12,
+          "loggedHours": 8,
+          "remainingHours": 4,
           "planStart": "29/09",
           "planEnd": "30/09",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "04/09",
+          "actualEnd": "14/09"
         },
         {
           "ticket": "SPQM-22",
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-22",
           "task": "BE-21 - Confirm engine DML reale",
           "owner": "David Vivarelli",
-          "status": "Da completare",
+          "status": "In corso",
           "estimatedHours": 16,
-          "loggedHours": 0,
-          "remainingHours": 16,
+          "loggedHours": 4,
+          "remainingHours": 12,
           "planStart": "30/09",
           "planEnd": "02/10",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "04/09",
+          "actualEnd": "04/09"
         },
         {
           "ticket": "SPQM-23",
@@ -403,14 +403,14 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-32",
           "task": "FE-06 - Shell applicativa e componenti shared",
           "owner": "Marco Caiella",
-          "status": "In corso",
+          "status": "Fatto",
           "estimatedHours": 8,
-          "loggedHours": 5,
-          "remainingHours": 3,
+          "loggedHours": 8,
+          "remainingHours": 0,
           "planStart": "16/07",
           "planEnd": "19/08",
           "actualStart": "16/07",
-          "actualEnd": "31/07"
+          "actualEnd": "08/09"
         },
         {
           "ticket": "SPQM-33",
@@ -473,14 +473,14 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-43",
           "task": "FE-17 - Editor SQL DBA",
           "owner": "Marco Caiella",
-          "status": "In corso",
+          "status": "Fatto",
           "estimatedHours": 16,
-          "loggedHours": 15,
-          "remainingHours": 1,
+          "loggedHours": 16,
+          "remainingHours": 0,
           "planStart": "24/07",
           "planEnd": "11/09",
           "actualStart": "24/07",
-          "actualEnd": "11/08"
+          "actualEnd": "08/09"
         },
         {
           "ticket": "SPQM-29",
@@ -531,12 +531,12 @@
           "owner": "Marco Caiella",
           "status": "In corso",
           "estimatedHours": 16,
-          "loggedHours": 5,
-          "remainingHours": 11,
+          "loggedHours": 9,
+          "remainingHours": 7,
           "planStart": "03/08",
           "planEnd": "09/09",
           "actualStart": "03/08",
-          "actualEnd": "03/08"
+          "actualEnd": "10/09"
         },
         {
           "ticket": "SPQM-37",
@@ -571,14 +571,14 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-40",
           "task": "FE-14 - Area Admin gestione permessi",
           "owner": "Marco Caiella",
-          "status": "Da completare",
+          "status": "In corso",
           "estimatedHours": 20,
-          "loggedHours": 0,
-          "remainingHours": 20,
+          "loggedHours": 12,
+          "remainingHours": 8,
           "planStart": "22/09",
           "planEnd": "25/09",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "07/09",
+          "actualEnd": "10/09"
         },
         {
           "ticket": "SPQM-41",
@@ -627,14 +627,14 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-46",
           "task": "FE-20 - State machine salvataggio template DBA",
           "owner": "Marco Caiella",
-          "status": "Da completare",
+          "status": "In corso",
           "estimatedHours": 8,
-          "loggedHours": 0,
-          "remainingHours": 8,
+          "loggedHours": 4,
+          "remainingHours": 4,
           "planStart": "01/10",
           "planEnd": "02/10",
-          "actualStart": null,
-          "actualEnd": null
+          "actualStart": "11/09",
+          "actualEnd": "11/09"
         },
         {
           "ticket": "SPQM-47",
@@ -699,12 +699,12 @@
           "owner": "Marco Caiella",
           "status": "In corso",
           "estimatedHours": 24,
-          "loggedHours": 14,
-          "remainingHours": 10,
+          "loggedHours": 18,
+          "remainingHours": 6,
           "planStart": "03/08",
           "planEnd": "16/09",
           "actualStart": "03/08",
-          "actualEnd": "17/08"
+          "actualEnd": "11/09"
         }
       ]
     },
@@ -720,7 +720,7 @@
           "status": "Da completare",
           "estimatedHours": 0,
           "loggedHours": 0,
-          "remainingHours": 291,
+          "remainingHours": 231,
           "planStart": null,
           "planEnd": null,
           "actualStart": null,
