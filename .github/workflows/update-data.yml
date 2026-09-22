@@ -7,10 +7,19 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,18 +29,38 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Test worklog-only publication
+        run: python -m unittest discover -s tests
+
       - name: Update gantt data
         env:
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-          JIRA_JQL: ${{ secrets.JIRA_JQL }}
-          JIRA_PLAN_START_FIELD: ${{ secrets.JIRA_PLAN_START_FIELD }}
-          JIRA_PLAN_END_FIELD: ${{ secrets.JIRA_PLAN_END_FIELD }}
         run: python scripts/update_from_jira.py
 
       - name: Render Gantt HTML
         run: python scripts/render_gantt.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/gantt-data.json index.html
+          git diff --cached --quiet || git commit -m "chore: auto-update gantt data"
+          git push
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Publish Gantt to Confluence
         env:
@@ -39,11 +68,3 @@ jobs:
           CONFLUENCE_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
           CONFLUENCE_API_TOKEN: ${{ secrets.CONFLUENCE_API_TOKEN }}
         run: python scripts/publish_to_confluence.py
-
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/gantt-data.json
-          git diff --cached --quiet || git commit -m "chore: auto-update gantt data"
-          git push

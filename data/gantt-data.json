@@ -1,13 +1,9 @@
 {
   "meta": {
     "title": "SPQM-1 - Query Manager per Service Desk",
-    "deadline": "16/10/2026",
-    "beDeadline": "09/10/2026",
-    "feDeadline": "08/10/2026",
-    "today": "21/09/2026",
+    "today": "22/09/2026",
     "timezone": "Europe/Rome",
-    "autoRefreshMinutes": 10,
-    "lastSync": "2026-09-21T14:49:45Z"
+    "lastSync": "2026-09-22T06:06:58Z"
   },
   "sections": [
     {
@@ -20,321 +16,17 @@
           "task": "BE-01 - Impostazione progetto backend multi-modulo",
           "owner": "David Vivarelli",
           "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "14/07",
-          "planEnd": "14/07",
-          "actualStart": "14/07",
-          "actualEnd": "14/07"
-        },
-        {
-          "ticket": "SPQM-4",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-4",
-          "task": "BE-03 - Sicurezza applicativa e JWT",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 16,
-          "loggedHours": 16,
-          "remainingHours": 0,
-          "planStart": "15/07",
-          "planEnd": "16/07",
-          "actualStart": "15/07",
-          "actualEnd": "16/07"
-        },
-        {
-          "ticket": "SPQM-5",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-5",
-          "task": "BE-04 - Configurazione registry database target",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "17/07",
-          "planEnd": "27/07",
-          "actualStart": "17/07",
-          "actualEnd": "27/07"
-        },
-        {
-          "ticket": "SPQM-6",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-6",
-          "task": "BE-05 - Modellazione persistenza MongoDB",
-          "owner": "David Vivarelli",
-          "status": "In corso",
-          "estimatedHours": 12,
-          "loggedHours": 12,
-          "remainingHours": 0,
-          "planStart": "22/07",
-          "planEnd": "23/07",
-          "actualStart": "22/07",
-          "actualEnd": "23/07"
-        },
-        {
-          "ticket": "SPQM-7",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-7",
-          "task": "BE-06 - Gestione anagrafica template DBA",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 12,
-          "loggedHours": 12,
-          "remainingHours": 0,
-          "planStart": "24/07",
-          "planEnd": "27/07",
-          "actualStart": "24/07",
-          "actualEnd": "27/07"
-        },
-        {
-          "ticket": "SPQM-8",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-8",
-          "task": "BE-07 - Soft delete template",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "27/07",
-          "planEnd": "27/07",
-          "actualStart": "27/07",
-          "actualEnd": "27/07"
-        },
-        {
-          "ticket": "SPQM-9",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-9",
-          "task": "BE-08 - Parsing SQL e validazione strutturale",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 32,
-          "loggedHours": 28,
-          "remainingHours": 0,
-          "planStart": "28/07",
-          "planEnd": "24/08",
-          "actualStart": "28/07",
-          "actualEnd": "31/07"
-        },
-        {
-          "ticket": "SPQM-10",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-10",
-          "task": "BE-09 - Metadata parametri e tipizzazione",
-          "owner": "David Vivarelli",
-          "status": "In corso",
-          "estimatedHours": 12,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "24/08",
-          "planEnd": "25/08",
-          "actualStart": "03/08",
-          "actualEnd": "03/08"
-        },
-        {
-          "ticket": "SPQM-11",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-11",
-          "task": "BE-10 - Analisi template lato DBA",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 16,
-          "loggedHours": 16,
-          "remainingHours": 0,
-          "planStart": "26/08",
-          "planEnd": "27/08",
-          "actualStart": "04/08",
-          "actualEnd": "05/08"
-        },
-        {
-          "ticket": "SPQM-12",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-12",
-          "task": "BE-11 - Validazione database lato DBA",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 12,
-          "loggedHours": 12,
-          "remainingHours": 0,
-          "planStart": "28/08",
-          "planEnd": "31/08",
-          "actualStart": "05/08",
-          "actualEnd": "05/08"
-        },
-        {
-          "ticket": "SPQM-13",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-13",
-          "task": "BE-12 - Gestione utenti SD da GIREX",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 16,
-          "loggedHours": 16,
-          "remainingHours": 0,
-          "planStart": "01/09",
-          "planEnd": "02/09",
-          "actualStart": "24/08",
-          "actualEnd": "24/08"
-        },
-        {
-          "ticket": "SPQM-14",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-14",
-          "task": "BE-13 - Gestione permessi Admin",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 16,
-          "loggedHours": 16,
-          "remainingHours": 0,
-          "planStart": "03/09",
-          "planEnd": "14/09",
-          "actualStart": "26/08",
-          "actualEnd": "26/08"
-        },
-        {
-          "ticket": "SPQM-15",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-15",
-          "task": "BE-14 - Integrazione Securden",
-          "owner": "David Vivarelli",
-          "status": "Da completare",
-          "estimatedHours": 20,
-          "loggedHours": 0,
-          "remainingHours": 20,
-          "planStart": "14/09",
-          "planEnd": "16/09",
-          "actualStart": null,
-          "actualEnd": null
-        },
-        {
-          "ticket": "SPQM-16",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-16",
-          "task": "BE-15 - Motore di connessione SQL Server",
-          "owner": "David Vivarelli",
-          "status": "In corso",
-          "estimatedHours": 8,
-          "loggedHours": 4,
-          "remainingHours": 0,
-          "planStart": "17/09",
-          "planEnd": "17/09",
-          "actualStart": "27/08",
-          "actualEnd": "27/08"
-        },
-        {
-          "ticket": "SPQM-17",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-17",
-          "task": "BE-16 - Lista template eseguibili",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "18/09",
-          "planEnd": "21/09",
-          "actualStart": "31/08",
-          "actualEnd": "31/08"
-        },
-        {
-          "ticket": "SPQM-18",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-18",
-          "task": "BE-17 - Validazione runtime permessi e precondizioni",
-          "owner": "David Vivarelli",
-          "status": "In corso",
-          "estimatedHours": 8,
-          "loggedHours": 4,
-          "remainingHours": 0,
-          "planStart": "21/09",
-          "planEnd": "22/09",
-          "actualStart": "01/09",
-          "actualEnd": "01/09"
-        },
-        {
-          "ticket": "SPQM-19",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-19",
-          "task": "BE-18 - Preview engine per UPDATE e DELETE",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 24,
-          "loggedHours": 12,
-          "remainingHours": 0,
-          "planStart": "22/09",
-          "planEnd": "25/09",
-          "actualStart": "01/09",
-          "actualEnd": "02/09"
-        },
-        {
-          "ticket": "SPQM-20",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-20",
-          "task": "BE-19 - Gestione tecnica preview per INSERT",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 4,
-          "remainingHours": 0,
-          "planStart": "28/09",
-          "planEnd": "28/09",
-          "actualStart": "03/09",
-          "actualEnd": "03/09"
-        },
-        {
-          "ticket": "SPQM-21",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-21",
-          "task": "BE-20 - Sessioni di esecuzione con executionUuid",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 12,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "29/09",
-          "planEnd": "30/09",
-          "actualStart": "04/09",
-          "actualEnd": "14/09"
-        },
-        {
-          "ticket": "SPQM-22",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-22",
-          "task": "BE-21 - Confirm engine DML reale",
-          "owner": "David Vivarelli",
-          "status": "In corso",
-          "estimatedHours": 16,
-          "loggedHours": 12,
-          "remainingHours": 0,
-          "planStart": "30/09",
-          "planEnd": "02/10",
-          "actualStart": "04/09",
-          "actualEnd": "15/09"
-        },
-        {
-          "ticket": "SPQM-23",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-23",
-          "task": "BE-22 - Audit append-only",
-          "owner": "David Vivarelli",
-          "status": "Fatto",
-          "estimatedHours": 12,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "05/10",
-          "planEnd": "06/10",
-          "actualStart": "14/09",
-          "actualEnd": "14/09"
-        },
-        {
-          "ticket": "SPQM-24",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-24",
-          "task": "BE-23 - Gestione errori",
-          "owner": "David Vivarelli",
-          "status": "In corso",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "06/10",
-          "planEnd": "07/10",
-          "actualStart": "16/09",
-          "actualEnd": "16/09"
-        },
-        {
-          "ticket": "SPQM-25",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-25",
-          "task": "BE-25 - Packaging e readiness al deploy",
-          "owner": "David Vivarelli",
-          "status": "Da completare",
-          "estimatedHours": 16,
-          "loggedHours": 0,
-          "remainingHours": 16,
-          "planStart": "07/10",
-          "planEnd": "09/10",
-          "actualStart": null,
-          "actualEnd": null
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41415",
+              "started": "2026-07-14T16:32:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
         },
         {
           "ticket": "SPQM-3",
@@ -342,13 +34,449 @@
           "task": "BE-02 - Definizione contratti API OpenAPI",
           "owner": "Marco Caiella",
           "status": "In corso",
-          "estimatedHours": 12,
-          "loggedHours": 8,
-          "remainingHours": 4,
-          "planStart": null,
-          "planEnd": null,
-          "actualStart": "13/07",
-          "actualEnd": "13/07"
+          "statusClass": "prog",
+          "estimatedHours": 12.0,
+          "loggedHours": 8.0,
+          "remainingHours": 4.0,
+          "worklogs": [
+            {
+              "id": "41407",
+              "started": "2026-07-13T16:12:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-4",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-4",
+          "task": "BE-03 - Sicurezza applicativa e JWT",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 16.0,
+          "loggedHours": 16.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41416",
+              "started": "2026-07-15T16:39:00.000+0200",
+              "timeSpentSeconds": 28800
+            },
+            {
+              "id": "41417",
+              "started": "2026-07-16T16:40:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-5",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-5",
+          "task": "BE-04 - Configurazione registry database target",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41421",
+              "started": "2026-07-17T16:44:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41431",
+              "started": "2026-07-27T17:27:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-6",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-6",
+          "task": "BE-05 - Modellazione persistenza MongoDB",
+          "owner": "David Vivarelli",
+          "status": "In corso",
+          "statusClass": "prog",
+          "estimatedHours": 12.0,
+          "loggedHours": 12.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41422",
+              "started": "2026-07-22T16:55:00.000+0200",
+              "timeSpentSeconds": 28800
+            },
+            {
+              "id": "41423",
+              "started": "2026-07-23T16:56:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-7",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-7",
+          "task": "BE-06 - Gestione anagrafica template DBA",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 12.0,
+          "loggedHours": 12.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41424",
+              "started": "2026-07-27T16:56:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41425",
+              "started": "2026-07-24T16:57:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41432",
+              "started": "2026-07-27T17:28:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-8",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-8",
+          "task": "BE-07 - Soft delete template",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41426",
+              "started": "2026-07-27T17:14:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-9",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-9",
+          "task": "BE-08 - Parsing SQL e validazione strutturale",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 32.0,
+          "loggedHours": 28.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41427",
+              "started": "2026-07-28T17:15:00.000+0200",
+              "timeSpentSeconds": 28800
+            },
+            {
+              "id": "41428",
+              "started": "2026-07-30T17:15:00.000+0200",
+              "timeSpentSeconds": 28800
+            },
+            {
+              "id": "41429",
+              "started": "2026-07-31T17:15:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41430",
+              "started": "2026-07-29T17:17:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-10",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-10",
+          "task": "BE-09 - Metadata parametri e tipizzazione",
+          "owner": "David Vivarelli",
+          "status": "In corso",
+          "statusClass": "prog",
+          "estimatedHours": 12.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41500",
+              "started": "2026-08-03T12:09:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-11",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-11",
+          "task": "BE-10 - Analisi template lato DBA",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 16.0,
+          "loggedHours": 16.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41501",
+              "started": "2026-08-04T12:09:00.000+0200",
+              "timeSpentSeconds": 28800
+            },
+            {
+              "id": "41502",
+              "started": "2026-08-05T12:09:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-12",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-12",
+          "task": "BE-11 - Validazione database lato DBA",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 12.0,
+          "loggedHours": 12.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41503",
+              "started": "2026-08-05T12:10:00.000+0200",
+              "timeSpentSeconds": 43200
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-13",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-13",
+          "task": "BE-12 - Gestione utenti SD da GIREX",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 16.0,
+          "loggedHours": 16.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41504",
+              "started": "2026-08-24T12:11:00.000+0200",
+              "timeSpentSeconds": 57600
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-14",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-14",
+          "task": "BE-13 - Gestione permessi Admin",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 16.0,
+          "loggedHours": 16.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41505",
+              "started": "2026-08-26T12:12:00.000+0200",
+              "timeSpentSeconds": 57600
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-16",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-16",
+          "task": "BE-15 - Motore di connessione SQL Server",
+          "owner": "David Vivarelli",
+          "status": "In corso",
+          "statusClass": "prog",
+          "estimatedHours": 8.0,
+          "loggedHours": 4.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41506",
+              "started": "2026-08-27T12:13:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-17",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-17",
+          "task": "BE-16 - Lista template eseguibili",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41507",
+              "started": "2026-08-31T08:57:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-18",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-18",
+          "task": "BE-17 - Validazione runtime permessi e precondizioni",
+          "owner": "David Vivarelli",
+          "status": "In corso",
+          "statusClass": "prog",
+          "estimatedHours": 8.0,
+          "loggedHours": 4.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41516",
+              "started": "2026-09-01T10:21:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-19",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-19",
+          "task": "BE-18 - Preview engine per UPDATE e DELETE",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 24.0,
+          "loggedHours": 12.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41517",
+              "started": "2026-09-01T10:23:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41518",
+              "started": "2026-09-02T10:23:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-20",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-20",
+          "task": "BE-19 - Gestione tecnica preview per INSERT",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 4.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41520",
+              "started": "2026-09-03T10:25:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-21",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-21",
+          "task": "BE-20 - Sessioni di esecuzione con executionUuid",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 12.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41521",
+              "started": "2026-09-04T10:26:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41523",
+              "started": "2026-09-14T10:27:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-22",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-22",
+          "task": "BE-21 - Confirm engine DML reale",
+          "owner": "David Vivarelli",
+          "status": "In corso",
+          "statusClass": "prog",
+          "estimatedHours": 16.0,
+          "loggedHours": 12.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41524",
+              "started": "2026-09-04T10:28:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41534",
+              "started": "2026-09-15T15:15:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-23",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-23",
+          "task": "BE-22 - Audit append-only",
+          "owner": "David Vivarelli",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 12.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41532",
+              "started": "2026-09-14T15:12:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-24",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-24",
+          "task": "BE-23 - Gestione errori",
+          "owner": "David Vivarelli",
+          "status": "In corso",
+          "statusClass": "prog",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41533",
+              "started": "2026-09-16T15:14:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-25",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-25",
+          "task": "BE-25 - Packaging e readiness al deploy",
+          "owner": "David Vivarelli",
+          "status": "Da completare",
+          "statusClass": "todo",
+          "estimatedHours": 16.0,
+          "loggedHours": 0.0,
+          "remainingHours": 16.0,
+          "worklogs": []
         }
       ]
     },
@@ -362,13 +490,17 @@
           "task": "FE-01 - Bootstrap progetto frontend Angular",
           "owner": "Marco Caiella",
           "status": "In corso",
-          "estimatedHours": 12,
-          "loggedHours": 8,
-          "remainingHours": 4,
-          "planStart": "14/07",
-          "planEnd": "18/08",
-          "actualStart": "14/07",
-          "actualEnd": "14/07"
+          "statusClass": "prog",
+          "estimatedHours": 12.0,
+          "loggedHours": 8.0,
+          "remainingHours": 4.0,
+          "worklogs": [
+            {
+              "id": "41408",
+              "started": "2026-07-14T16:12:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
         },
         {
           "ticket": "SPQM-28",
@@ -376,111 +508,22 @@
           "task": "FE-02 - Integrazione OpenAPI client generator",
           "owner": "Marco Caiella",
           "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "15/07",
-          "planEnd": "27/07",
-          "actualStart": "15/07",
-          "actualEnd": "27/07"
-        },
-        {
-          "ticket": "SPQM-31",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-31",
-          "task": "FE-05 - Routing e guards per ruolo",
-          "owner": "Marco Caiella",
-          "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "16/07",
-          "planEnd": "29/07",
-          "actualStart": "16/07",
-          "actualEnd": "29/07"
-        },
-        {
-          "ticket": "SPQM-32",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-32",
-          "task": "FE-06 - Shell applicativa e componenti shared",
-          "owner": "Marco Caiella",
-          "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "16/07",
-          "planEnd": "19/08",
-          "actualStart": "16/07",
-          "actualEnd": "08/09"
-        },
-        {
-          "ticket": "SPQM-33",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-33",
-          "task": "FE-07 - Dashboard SD: lista template assegnati",
-          "owner": "Marco Caiella",
-          "status": "Fatto",
-          "estimatedHours": 12,
-          "loggedHours": 12,
-          "remainingHours": 0,
-          "planStart": "15/07",
-          "planEnd": "20/08",
-          "actualStart": "15/07",
-          "actualEnd": "15/09"
-        },
-        {
-          "ticket": "SPQM-34",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-34",
-          "task": "FE-08 - Form dinamico da metadata backend",
-          "owner": "Marco Caiella",
-          "status": "Fatto",
-          "estimatedHours": 20,
-          "loggedHours": 20,
-          "remainingHours": 0,
-          "planStart": "23/07",
-          "planEnd": "07/09",
-          "actualStart": "23/07",
-          "actualEnd": "06/08"
-        },
-        {
-          "ticket": "SPQM-38",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-38",
-          "task": "FE-12 - Layout e navigazione area Admin",
-          "owner": "Marco Caiella",
-          "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "27/07",
-          "planEnd": "09/09",
-          "actualStart": "27/07",
-          "actualEnd": "04/08"
-        },
-        {
-          "ticket": "SPQM-42",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-42",
-          "task": "FE-16 - Dashboard DBA libreria template",
-          "owner": "Marco Caiella",
-          "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "24/07",
-          "planEnd": "10/09",
-          "actualStart": "24/07",
-          "actualEnd": "10/08"
-        },
-        {
-          "ticket": "SPQM-43",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-43",
-          "task": "FE-17 - Editor SQL DBA",
-          "owner": "Marco Caiella",
-          "status": "Fatto",
-          "estimatedHours": 16,
-          "loggedHours": 16,
-          "remainingHours": 0,
-          "planStart": "24/07",
-          "planEnd": "11/09",
-          "actualStart": "24/07",
-          "actualEnd": "08/09"
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41418",
+              "started": "2026-07-27T16:42:00.000+0200",
+              "timeSpentSeconds": 7200
+            },
+            {
+              "id": "41433",
+              "started": "2026-07-15T12:16:00.000+0200",
+              "timeSpentSeconds": 21600
+            }
+          ]
         },
         {
           "ticket": "SPQM-29",
@@ -488,13 +531,22 @@
           "task": "FE-03 - Gestione bootstrap autenticazione",
           "owner": "Marco Caiella",
           "status": "Fatto",
-          "estimatedHours": 12,
-          "loggedHours": 12,
-          "remainingHours": 0,
-          "planStart": "28/07",
-          "planEnd": "29/07",
-          "actualStart": "28/07",
-          "actualEnd": "29/07"
+          "statusClass": "done",
+          "estimatedHours": 12.0,
+          "loggedHours": 12.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41437",
+              "started": "2026-07-28T10:58:00.000+0200",
+              "timeSpentSeconds": 28800
+            },
+            {
+              "id": "41438",
+              "started": "2026-07-29T10:58:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
         },
         {
           "ticket": "SPQM-30",
@@ -502,13 +554,139 @@
           "task": "FE-04 - Interceptor e gestione sicurezza FE",
           "owner": "Marco Caiella",
           "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "30/07",
-          "planEnd": "30/07",
-          "actualStart": "30/07",
-          "actualEnd": "30/07"
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41440",
+              "started": "2026-07-30T11:00:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-31",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-31",
+          "task": "FE-05 - Routing e guards per ruolo",
+          "owner": "Marco Caiella",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41409",
+              "started": "2026-07-16T16:13:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41439",
+              "started": "2026-07-29T10:59:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-32",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-32",
+          "task": "FE-06 - Shell applicativa e componenti shared",
+          "owner": "Marco Caiella",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41410",
+              "started": "2026-07-16T16:14:00.000+0200",
+              "timeSpentSeconds": 10800
+            },
+            {
+              "id": "41441",
+              "started": "2026-07-31T11:00:00.000+0200",
+              "timeSpentSeconds": 7200
+            },
+            {
+              "id": "41526",
+              "started": "2026-09-08T11:28:00.000+0200",
+              "timeSpentSeconds": 10800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-33",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-33",
+          "task": "FE-07 - Dashboard SD: lista template assegnati",
+          "owner": "Marco Caiella",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 12.0,
+          "loggedHours": 12.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41411",
+              "started": "2026-07-23T16:14:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41434",
+              "started": "2026-07-15T12:17:00.000+0200",
+              "timeSpentSeconds": 7200
+            },
+            {
+              "id": "41602",
+              "started": "2026-09-14T09:32:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41605",
+              "started": "2026-09-15T09:33:00.000+0200",
+              "timeSpentSeconds": 7200
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-34",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-34",
+          "task": "FE-08 - Form dinamico da metadata backend",
+          "owner": "Marco Caiella",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 20.0,
+          "loggedHours": 20.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41412",
+              "started": "2026-07-23T16:15:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41420",
+              "started": "2026-07-27T16:43:00.000+0200",
+              "timeSpentSeconds": 7200
+            },
+            {
+              "id": "41447",
+              "started": "2026-08-05T09:46:00.000+0200",
+              "timeSpentSeconds": 21600
+            },
+            {
+              "id": "41448",
+              "started": "2026-08-04T09:47:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41450",
+              "started": "2026-08-06T09:52:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
         },
         {
           "ticket": "SPQM-35",
@@ -516,13 +694,17 @@
           "task": "FE-09 - Modale SD di esecuzione template",
           "owner": "Marco Caiella",
           "status": "Fatto",
-          "estimatedHours": 12,
-          "loggedHours": 8,
-          "remainingHours": 4,
-          "planStart": "16/09",
-          "planEnd": "18/09",
-          "actualStart": "18/08",
-          "actualEnd": "18/08"
+          "statusClass": "done",
+          "estimatedHours": 12.0,
+          "loggedHours": 8.0,
+          "remainingHours": 4.0,
+          "worklogs": [
+            {
+              "id": "41465",
+              "started": "2026-08-18T10:15:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
         },
         {
           "ticket": "SPQM-36",
@@ -530,13 +712,22 @@
           "task": "FE-10 - Flusso UI preview/confirm SD",
           "owner": "Marco Caiella",
           "status": "In corso",
-          "estimatedHours": 16,
-          "loggedHours": 9,
-          "remainingHours": 7,
-          "planStart": "03/08",
-          "planEnd": "09/09",
-          "actualStart": "03/08",
-          "actualEnd": "10/09"
+          "statusClass": "prog",
+          "estimatedHours": 16.0,
+          "loggedHours": 9.0,
+          "remainingHours": 7.0,
+          "worklogs": [
+            {
+              "id": "41443",
+              "started": "2026-08-03T11:02:00.000+0200",
+              "timeSpentSeconds": 18000
+            },
+            {
+              "id": "41528",
+              "started": "2026-09-10T11:30:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
         },
         {
           "ticket": "SPQM-37",
@@ -544,13 +735,40 @@
           "task": "FE-11 - Stato frontend per esecuzioni",
           "owner": "Marco Caiella",
           "status": "In corso",
-          "estimatedHours": 12,
-          "loggedHours": 8,
-          "remainingHours": 4,
-          "planStart": "18/09",
-          "planEnd": "21/09",
-          "actualStart": "19/08",
-          "actualEnd": "19/08"
+          "statusClass": "prog",
+          "estimatedHours": 12.0,
+          "loggedHours": 8.0,
+          "remainingHours": 4.0,
+          "worklogs": [
+            {
+              "id": "41466",
+              "started": "2026-08-19T10:17:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-38",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-38",
+          "task": "FE-12 - Layout e navigazione area Admin",
+          "owner": "Marco Caiella",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41419",
+              "started": "2026-07-27T16:43:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41446",
+              "started": "2026-08-04T09:45:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
         },
         {
           "ticket": "SPQM-39",
@@ -558,13 +776,27 @@
           "task": "FE-13 - Area Admin esecuzione template",
           "owner": "Marco Caiella",
           "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "21/09",
-          "planEnd": "22/09",
-          "actualStart": "05/08",
-          "actualEnd": "07/08"
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41449",
+              "started": "2026-08-05T09:49:00.000+0200",
+              "timeSpentSeconds": 7200
+            },
+            {
+              "id": "41451",
+              "started": "2026-08-06T09:53:00.000+0200",
+              "timeSpentSeconds": 7200
+            },
+            {
+              "id": "41452",
+              "started": "2026-08-07T09:54:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
         },
         {
           "ticket": "SPQM-40",
@@ -572,13 +804,27 @@
           "task": "FE-14 - Area Admin gestione permessi",
           "owner": "Marco Caiella",
           "status": "In corso",
-          "estimatedHours": 20,
-          "loggedHours": 17,
-          "remainingHours": 3,
-          "planStart": "22/09",
-          "planEnd": "25/09",
-          "actualStart": "07/09",
-          "actualEnd": "16/09"
+          "statusClass": "prog",
+          "estimatedHours": 20.0,
+          "loggedHours": 17.0,
+          "remainingHours": 3.0,
+          "worklogs": [
+            {
+              "id": "41525",
+              "started": "2026-09-07T11:27:00.000+0200",
+              "timeSpentSeconds": 28800
+            },
+            {
+              "id": "41529",
+              "started": "2026-09-10T11:31:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41606",
+              "started": "2026-09-16T09:34:00.000+0200",
+              "timeSpentSeconds": 18000
+            }
+          ]
         },
         {
           "ticket": "SPQM-41",
@@ -586,13 +832,83 @@
           "task": "FE-15 - Toggle realtime grant/revoke Admin",
           "owner": "Marco Caiella",
           "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "25/09",
-          "planEnd": "28/09",
-          "actualStart": "14/09",
-          "actualEnd": "15/09"
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41603",
+              "started": "2026-09-14T09:32:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41604",
+              "started": "2026-09-15T09:33:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-42",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-42",
+          "task": "FE-16 - Dashboard DBA libreria template",
+          "owner": "Marco Caiella",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41413",
+              "started": "2026-07-24T16:15:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41454",
+              "started": "2026-08-07T10:01:00.000+0200",
+              "timeSpentSeconds": 7200
+            },
+            {
+              "id": "41456",
+              "started": "2026-08-10T10:03:00.000+0200",
+              "timeSpentSeconds": 7200
+            }
+          ]
+        },
+        {
+          "ticket": "SPQM-43",
+          "jira": "https://jira.gigroup.com/jira/browse/SPQM-43",
+          "task": "FE-17 - Editor SQL DBA",
+          "owner": "Marco Caiella",
+          "status": "Fatto",
+          "statusClass": "done",
+          "estimatedHours": 16.0,
+          "loggedHours": 16.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41414",
+              "started": "2026-07-24T16:16:00.000+0200",
+              "timeSpentSeconds": 10800
+            },
+            {
+              "id": "41457",
+              "started": "2026-08-10T10:03:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41458",
+              "started": "2026-08-11T10:04:00.000+0200",
+              "timeSpentSeconds": 28800
+            },
+            {
+              "id": "41527",
+              "started": "2026-09-08T11:29:00.000+0200",
+              "timeSpentSeconds": 3600
+            }
+          ]
         },
         {
           "ticket": "SPQM-44",
@@ -600,13 +916,22 @@
           "task": "FE-18 - Pannello risultati analisi DBA",
           "owner": "Marco Caiella",
           "status": "Fatto",
-          "estimatedHours": 16,
-          "loggedHours": 16,
-          "remainingHours": 0,
-          "planStart": "28/09",
-          "planEnd": "30/09",
-          "actualStart": "12/08",
-          "actualEnd": "13/08"
+          "statusClass": "done",
+          "estimatedHours": 16.0,
+          "loggedHours": 16.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41459",
+              "started": "2026-08-12T10:05:00.000+0200",
+              "timeSpentSeconds": 28800
+            },
+            {
+              "id": "41460",
+              "started": "2026-08-13T10:06:00.000+0200",
+              "timeSpentSeconds": 28800
+            }
+          ]
         },
         {
           "ticket": "SPQM-45",
@@ -614,13 +939,22 @@
           "task": "FE-19 - Form metadati template DBA",
           "owner": "Marco Caiella",
           "status": "Fatto",
-          "estimatedHours": 8,
-          "loggedHours": 8,
-          "remainingHours": 0,
-          "planStart": "30/09",
-          "planEnd": "01/10",
-          "actualStart": "14/08",
-          "actualEnd": "17/08"
+          "statusClass": "done",
+          "estimatedHours": 8.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41462",
+              "started": "2026-08-14T10:08:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41463",
+              "started": "2026-08-17T10:10:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
         },
         {
           "ticket": "SPQM-46",
@@ -628,13 +962,17 @@
           "task": "FE-20 - State machine salvataggio template DBA",
           "owner": "Marco Caiella",
           "status": "In corso",
-          "estimatedHours": 8,
-          "loggedHours": 4,
-          "remainingHours": 4,
-          "planStart": "01/10",
-          "planEnd": "02/10",
-          "actualStart": "11/09",
-          "actualEnd": "11/09"
+          "statusClass": "prog",
+          "estimatedHours": 8.0,
+          "loggedHours": 4.0,
+          "remainingHours": 4.0,
+          "worklogs": [
+            {
+              "id": "41531",
+              "started": "2026-09-11T11:32:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
         },
         {
           "ticket": "SPQM-47",
@@ -642,13 +980,11 @@
           "task": "FE-21 - Delete template DBA",
           "owner": "Marco Caiella",
           "status": "Da completare",
-          "estimatedHours": 4,
-          "loggedHours": 0,
-          "remainingHours": 4,
-          "planStart": "02/10",
-          "planEnd": "02/10",
-          "actualStart": null,
-          "actualEnd": null
+          "statusClass": "todo",
+          "estimatedHours": 4.0,
+          "loggedHours": 0.0,
+          "remainingHours": 4.0,
+          "worklogs": []
         },
         {
           "ticket": "SPQM-48",
@@ -656,13 +992,11 @@
           "task": "FE-22 - Gestione errori e feedback utente",
           "owner": "Marco Caiella",
           "status": "In corso",
-          "estimatedHours": 4,
-          "loggedHours": 0,
-          "remainingHours": 4,
-          "planStart": "02/10",
-          "planEnd": "05/10",
-          "actualStart": null,
-          "actualEnd": null
+          "statusClass": "prog",
+          "estimatedHours": 4.0,
+          "loggedHours": 0.0,
+          "remainingHours": 4.0,
+          "worklogs": []
         },
         {
           "ticket": "SPQM-49",
@@ -670,13 +1004,11 @@
           "task": "FE-24 - Packaging e readiness al deploy",
           "owner": "Marco Caiella",
           "status": "Da completare",
-          "estimatedHours": 4,
-          "loggedHours": 0,
-          "remainingHours": 4,
-          "planStart": "05/10",
-          "planEnd": "05/10",
-          "actualStart": null,
-          "actualEnd": null
+          "statusClass": "todo",
+          "estimatedHours": 4.0,
+          "loggedHours": 0.0,
+          "remainingHours": 4.0,
+          "worklogs": []
         },
         {
           "ticket": "SPQM-50",
@@ -684,13 +1016,11 @@
           "task": "Gestione progetto",
           "owner": "Marco Caiella",
           "status": "Da completare",
-          "estimatedHours": 20,
-          "loggedHours": 0,
-          "remainingHours": 20,
-          "planStart": "05/10",
-          "planEnd": "08/10",
-          "actualStart": null,
-          "actualEnd": null
+          "statusClass": "todo",
+          "estimatedHours": 20.0,
+          "loggedHours": 0.0,
+          "remainingHours": 20.0,
+          "worklogs": []
         },
         {
           "ticket": "SPQM-51",
@@ -698,61 +1028,54 @@
           "task": "Codereview",
           "owner": "Marco Caiella",
           "status": "In corso",
-          "estimatedHours": 24,
-          "loggedHours": 18,
-          "remainingHours": 6,
-          "planStart": "03/08",
-          "planEnd": "16/09",
-          "actualStart": "03/08",
-          "actualEnd": "11/09"
-        }
-      ]
-    },
-    {
-      "name": "Altro",
-      "owner": "",
-      "tasks": [
-        {
-          "ticket": "SPQM-1",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-1",
-          "task": "Query manager per service desk",
-          "owner": "Chiara Carroccio",
-          "status": "Da completare",
-          "estimatedHours": 0,
-          "loggedHours": 0,
-          "remainingHours": 124,
-          "planStart": null,
-          "planEnd": null,
-          "actualStart": null,
-          "actualEnd": null
+          "statusClass": "prog",
+          "estimatedHours": 24.0,
+          "loggedHours": 18.0,
+          "remainingHours": 6.0,
+          "worklogs": [
+            {
+              "id": "41442",
+              "started": "2026-08-03T11:01:00.000+0200",
+              "timeSpentSeconds": 7200
+            },
+            {
+              "id": "41453",
+              "started": "2026-08-07T10:00:00.000+0200",
+              "timeSpentSeconds": 7200
+            },
+            {
+              "id": "41455",
+              "started": "2026-08-10T10:02:00.000+0200",
+              "timeSpentSeconds": 7200
+            },
+            {
+              "id": "41461",
+              "started": "2026-08-14T10:07:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41464",
+              "started": "2026-08-17T10:11:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41530",
+              "started": "2026-09-11T11:31:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
         },
         {
           "ticket": "SPQM-52",
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-52",
           "task": "Bug fixing",
-          "owner": "",
+          "owner": "Unassigned",
           "status": "Da completare",
-          "estimatedHours": 40,
-          "loggedHours": 0,
-          "remainingHours": 40,
-          "planStart": null,
-          "planEnd": null,
-          "actualStart": null,
-          "actualEnd": null
-        },
-        {
-          "ticket": "SPQM-53",
-          "jira": "https://jira.gigroup.com/jira/browse/SPQM-53",
-          "task": "Registrare nuovo servizio a DB, nuovi claim + associazione utente",
-          "owner": "Marco Caiella",
-          "status": "Da completare",
-          "estimatedHours": 0,
-          "loggedHours": 0,
-          "remainingHours": 0,
-          "planStart": null,
-          "planEnd": null,
-          "actualStart": null,
-          "actualEnd": null
+          "statusClass": "todo",
+          "estimatedHours": 40.0,
+          "loggedHours": 0.0,
+          "remainingHours": 40.0,
+          "worklogs": []
         }
       ]
     }
