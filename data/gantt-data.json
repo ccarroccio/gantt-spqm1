@@ -3,7 +3,7 @@
     "title": "SPQM-1 - Query Manager per Service Desk",
     "today": "25/09/2026",
     "timezone": "Europe/Rome",
-    "lastSync": "2026-09-25T06:02:57Z"
+    "lastSync": "2026-09-25T13:14:31Z"
   },
   "sections": [
     {
@@ -711,11 +711,11 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-36",
           "task": "FE-10 - Flusso UI preview/confirm SD",
           "owner": "Marco Caiella",
-          "status": "In corso",
-          "statusClass": "prog",
+          "status": "Fatto",
+          "statusClass": "done",
           "estimatedHours": 16.0,
-          "loggedHours": 9.0,
-          "remainingHours": 7.0,
+          "loggedHours": 16.0,
+          "remainingHours": 0.0,
           "worklogs": [
             {
               "id": "41443",
@@ -726,6 +726,11 @@
               "id": "41528",
               "started": "2026-09-10T11:30:00.000+0200",
               "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41701",
+              "started": "2026-09-17T14:35:00.000+0200",
+              "timeSpentSeconds": 25200
             }
           ]
         },
@@ -806,8 +811,8 @@
           "status": "In corso",
           "statusClass": "prog",
           "estimatedHours": 20.0,
-          "loggedHours": 17.0,
-          "remainingHours": 3.0,
+          "loggedHours": 18.0,
+          "remainingHours": 2.0,
           "worklogs": [
             {
               "id": "41525",
@@ -823,6 +828,11 @@
               "id": "41606",
               "started": "2026-09-16T09:34:00.000+0200",
               "timeSpentSeconds": 18000
+            },
+            {
+              "id": "41702",
+              "started": "2026-09-17T14:36:00.000+0200",
+              "timeSpentSeconds": 3600
             }
           ]
         },
@@ -961,15 +971,20 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-46",
           "task": "FE-20 - State machine salvataggio template DBA",
           "owner": "Marco Caiella",
-          "status": "In corso",
-          "statusClass": "prog",
+          "status": "Fatto",
+          "statusClass": "done",
           "estimatedHours": 8.0,
-          "loggedHours": 4.0,
-          "remainingHours": 4.0,
+          "loggedHours": 8.0,
+          "remainingHours": 0.0,
           "worklogs": [
             {
               "id": "41531",
               "started": "2026-09-11T11:32:00.000+0200",
+              "timeSpentSeconds": 14400
+            },
+            {
+              "id": "41704",
+              "started": "2026-09-18T14:38:00.000+0200",
               "timeSpentSeconds": 14400
             }
           ]
@@ -979,12 +994,18 @@
           "jira": "https://jira.gigroup.com/jira/browse/SPQM-47",
           "task": "FE-21 - Delete template DBA",
           "owner": "Marco Caiella",
-          "status": "Da completare",
-          "statusClass": "todo",
+          "status": "Fatto",
+          "statusClass": "done",
           "estimatedHours": 4.0,
-          "loggedHours": 0.0,
-          "remainingHours": 4.0,
-          "worklogs": []
+          "loggedHours": 4.0,
+          "remainingHours": 0.0,
+          "worklogs": [
+            {
+              "id": "41703",
+              "started": "2026-09-18T14:36:00.000+0200",
+              "timeSpentSeconds": 14400
+            }
+          ]
         },
         {
           "ticket": "SPQM-48",
